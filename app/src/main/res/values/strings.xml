@@ -28,4 +28,44 @@
     <string name="error_login">Usuario o clave incorrectos.</string>
     <string name="title_activity_branch_activities">BranchActivities</string>
     <string name="title_activity_insurance">InsuranceActivity</string>
+
+
+    <!-- Navigation Drawer Strings-->
+    <string name="label_nave_session_title">Sesión</string>
+    <string name="label_out_session">Cerrar Sesión</string>
+    <string name="label_nav_my_account">Mi Cuenta</string>
+
+    <!--Default strings-->
+    <string name="label_principal_menu">Menu Principal</string>
+    <string name="content_description">descripción</string>
+    <string name="title_activity_products">ProductsActivity</string>
+    <string name="tag_accept">Aceptar</string>
+    <string name="tag_cancel">Cancelar</string>
+    <string name="tag_delete">Eliminar</string>
+    <string name="tag_back">Atrás</string>
+
+
+    <!-- tabs navigation-->
+    <string name="tab_products">Productos</string>
+    <string name="tab_services">Servicios</string>
+    <string name="tab_account">Mi Cuenta</string>
+    <string name="tab_contact_mail">Contáctenos</string>
+    <string name="title_activity_managment_data">ManagmentDataActivity</string>
+
+    <!-- Contact Support Fragment strings-->
+    <string name="label_name">Nombre</string>
+    <string name="label_last_name">Apellido</string>
+    <string name="label_contact_support">Contáctenos</string>
+    <string name="message_suport">
+Atención las 24 horas
+Call Center: +595 21 689 1000
+Línea Gratuita: 0800 11 85 85
+*tajy (8259) desde cualquier
+compañía telefónica</string>
+    <string name="complete_form_message">Completa el formulario</string>
+    <string name="label_tajy">Aseguradora Tajy</string>
+    <string name="label_phone">Teléfono</string>
+    <string name="label_mail">Correo Electrónico</string>
+    <string name="label_issues">Asunto</string>
+    <string name="label_message">Mensaje</string>
 </resources>

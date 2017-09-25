@@ -27,7 +27,7 @@ import py.com.aseguradoratajy.tajydemo.utils.Utiles;
  * Created by Diego on 9/24/2017.
  */
 
-public class InsuranceAdapter extends ExpandableRecyclerAdapter<InsuranceAdapter.InsuranceViewHolder, InsuranceAdapter.DetailViewHolder> implements ExpandableListView.OnChildClickListener {
+public class InsuranceAdapter extends ExpandableRecyclerAdapter<InsuranceAdapter.InsuranceViewHolder, InsuranceAdapter.DetailViewHolder> {
     private List<? extends ParentListItem> parentItemList;
     private Context mContext;
 

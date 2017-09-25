@@ -14,20 +14,18 @@
         <item name="colorControlActivated">@color/colorIcons</item>
     </style>
 
-    <style name="AppTheme.DarkActionBar">
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MyButtonBar">
-        <item name="android:background">@color/colorPrimary</item>
+
     <style name="MyCustomRaisedButton" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/colorPrimary</item>
         <item name="colorControlHighlight">@color/colorPrimaryDark</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">bold</item>
-
         <item name="android:width">@dimen/button_default_size</item>
     </style>
 
@@ -50,6 +48,11 @@
 
     <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="MyButtonBar">
+        <item name="android:background">@color/colorPrimary</item>
     </style>
 
     <style name="MyCheckBox" parent="Theme.AppCompat.Light">
@@ -75,4 +78,4 @@
 
 </resources>
 
-</resources>
+
