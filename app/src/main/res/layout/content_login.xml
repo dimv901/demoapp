@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="py.com.aseguradoratajy.tajydemo.activities.LoginActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="80dp"
+    tools:showIn="@layout/activity_login">
+
+    <ImageView
+        android:id="@+id/login_imageview_banner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="32dp"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_tajy_banner"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/login_input_document"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_drawable_icon_bg"
+        android:drawableLeft="@mipmap/ic_person_white_24dp"
+        android:drawablePadding="@dimen/edit_text_drawable_padding"
+        android:drawableStart="@mipmap/ic_person_white_24dp"
+        android:ems="10"
+        android:hint="@string/prompt_document"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingBottom="@dimen/edit_text_padding"
+        android:paddingEnd="@dimen/edit_text_padding"
+        android:paddingLeft="@dimen/edit_text_left_drawable_padding"
+        android:paddingRight="@dimen/edit_text_padding"
+        android:paddingStart="@dimen/edit_text_left_drawable_padding"
+        android:paddingTop="@dimen/edit_text_padding"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintLeft_toLeftOf="@+id/login_imageview_banner"
+        app:layout_constraintRight_toRightOf="@+id/login_imageview_banner"
+        app:layout_constraintTop_toBottomOf="@+id/login_imageview_banner"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <EditText
+        android:id="@+id/login_input_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edit_text_drawable_icon_bg"
+        android:drawableLeft="@mipmap/ic_lock_white_24dp"
+        android:drawablePadding="@dimen/edit_text_drawable_padding"
+        android:drawableStart="@mipmap/ic_lock_white_24dp"
+        android:ems="10"
+        android:hint="@string/prompt_password"
+        android:inputType="numberPassword"
+        android:paddingBottom="@dimen/edit_text_padding"
+        android:paddingEnd="@dimen/edit_text_padding"
+        android:paddingLeft="@dimen/edit_text_left_drawable_padding"
+        android:paddingRight="@dimen/edit_text_padding"
+        android:paddingStart="@dimen/edit_text_left_drawable_padding"
+        android:paddingTop="@dimen/edit_text_padding"
+        app:layout_constraintLeft_toLeftOf="@+id/login_input_document"
+        app:layout_constraintRight_toRightOf="@+id/login_input_document"
+        app:layout_constraintTop_toBottomOf="@+id/login_input_document"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:id="@+id/login_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableEnd="@mipmap/ic_navigate_next_white_24dp"
+        android:drawableRight="@mipmap/ic_navigate_next_white_24dp"
+        android:text="@string/prompt_login"
+        android:theme="@style/MyCustomRaisedButton"
+        app:layout_constraintLeft_toLeftOf="@+id/login_input_password"
+        app:layout_constraintRight_toRightOf="@+id/login_input_password"
+        app:layout_constraintTop_toBottomOf="@+id/login_input_password"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
+
+    <android.support.v7.widget.ButtonBarLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button_bar_border"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1">
+
+        <Button
+            android:id="@+id/login_button_reset_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_forget_password"
+            android:theme="@style/MyCustomFlatButton" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/login_button_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prompt_register"
+            android:theme="@style/MyCustomFlatButton" />
+    </android.support.v7.widget.ButtonBarLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="0dp" />
+</android.support.constraint.ConstraintLayout>

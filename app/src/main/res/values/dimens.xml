@@ -20,4 +20,16 @@
     <dimen name="slide_title">30dp</dimen>
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="edit_text_padding">8dp</dimen>
+    <dimen name="edit_text_drawable_padding">20dp</dimen>
+    <dimen name="edit_text_left_drawable_padding">4dp</dimen>
+    <dimen name="edit_text_default_size">250dp</dimen>
+    <dimen name="button_default_size">250dp</dimen>
+    <dimen name="corner_round">4dp</dimen>
+    <dimen name="text_view_padding">5dp</dimen>
+    <dimen name="default_padding">5dp</dimen>
+    <dimen name="default_margin">5dp</dimen>
+    <dimen name="maps_margin">12dp</dimen>
 </resources>

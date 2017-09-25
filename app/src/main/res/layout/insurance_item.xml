@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/branch_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin"
+        card_view:cardCornerRadius="@dimen/corner_round">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/insurance_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_padding" />
+
+            <TextView
+                android:id="@+id/insurance_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_toEndOf="@+id/insurance_icon"
+                android:layout_toRightOf="@+id/insurance_icon"
+                android:text="TextView" />
+
+            <ImageView
+                android:id="@+id/insurance_icon_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/default_padding"
+                app:srcCompat="@mipmap/ic_keyboard_arrow_down_black_24dp" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.design.widget.CoordinatorLayout>
