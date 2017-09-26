@@ -15,6 +15,7 @@ import py.com.aseguradoratajy.tajydemo.fragments.BranchFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
+import py.com.aseguradoratajy.tajydemo.fragments.ReportSinisterFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ServicesFragments;
 import py.com.aseguradoratajy.tajydemo.models.Products;
 import py.com.aseguradoratajy.tajydemo.utiles.ViewPagerAdapter;
@@ -60,10 +61,16 @@ public class ManagementDataActivity extends AppCompatActivity implements
                             case R.id.action_branches:
                                 mViewPager.setCurrentItem(3);
                                 break;
+<<<<<<< HEAD
                             case R.id.action_contact:
                                 mViewPager.setCurrentItem(4);
                                 break;
 
+=======
+                            case R.id.action_report_sinister:
+                                mViewPager.setCurrentItem(4);
+                                break;
+>>>>>>> bfe3941ee46d37245f27679599e922436a0625ea
                         }
                         return false;
                     }
@@ -105,6 +112,7 @@ public class ManagementDataActivity extends AppCompatActivity implements
         adapter.addFrag(ServicesFragments.newInstance());
         adapter.addFrag(BranchFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
+        adapter.addFrag(ReportSinisterFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
 
@@ -121,6 +129,11 @@ public class ManagementDataActivity extends AppCompatActivity implements
 
     @Override
     public void onItemContactSupportListenerSelected() {
+
+    }
+
+    @Override
+    public void onItemSinisterListenerSelected(Products products) {
 
     }
 }

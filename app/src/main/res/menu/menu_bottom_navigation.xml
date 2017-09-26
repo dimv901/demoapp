@@ -22,20 +22,17 @@
         android:title="@string/tab_services"
         app:showAsAction="ifRoom" />
 
-
-    <item
-        android:id="@+id/action_branches"
-        android:checked="false"
-        android:icon="@mipmap/ic_place_black_36dp"
-        android:title="@string/tab_branches"
-        app:showAsAction="ifRoom" />
-
     <item
         android:id="@+id/action_contact"
         android:checked="false"
         android:icon="@mipmap/ic_email_black_36dp"
         android:title="@string/tab_contact_mail"
         app:showAsAction="ifRoom" />
-
+    <item
+        android:id="@+id/action_report_sinister"
+        android:checked="false"
+        android:icon="@mipmap/ic_whatshot_black_36dp"
+        android:title="@string/tab_report_sinister"
+        app:showAsAction="ifRoom" />
 
 </menu>

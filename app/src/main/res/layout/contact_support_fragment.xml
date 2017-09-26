@@ -10,7 +10,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,16 +120,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_face" />
+                        android:src="@mipmap/ic_face_black_36dp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/label_name"
+                        android:hint="@string/label_name_last_name"
                         android:textColorHint="@color/colorAccent">
 
                         <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/name_edit_text"
+                            android:id="@+id/name_and_last_name_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
@@ -136,7 +139,6 @@
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -148,36 +150,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_face" />
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/label_last_name"
-                        android:textColorHint="@color/colorAccent">
-
-                        <android.support.v7.widget.AppCompatEditText
-                            android:id="@+id/last_name_edit_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="text"
-                            android:textColor="@color/colorAccent" />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/default_padding"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_phone_red" />
+                        android:src="@mipmap/ic_phone_black_36dp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -206,13 +179,13 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_mail_red" />
+                        android:src="@mipmap/ic_mail_black_36dp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/label_mail"
-                        android:textColorHint="@color/colorPrimary">
+                        android:textColorHint="@color/colorAccent">
 
                         <android.support.v7.widget.AppCompatEditText
                             android:id="@+id/mail_edit_text"
@@ -235,7 +208,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_border_color_red" />
+                        android:src="@mipmap/ic_border_color_black_36dp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -265,7 +238,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_comment_red" />
+                        android:src="@mipmap/ic_comment_black_36dp" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -284,12 +257,13 @@
                             android:maxLines="10"
                             android:minLines="6"
                             android:scrollbars="vertical"
-                            android:textColor="@color/icons" />
+                            android:textColor="@color/colorAccent" />
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/send_fab_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
