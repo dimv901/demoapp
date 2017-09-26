@@ -64,15 +64,15 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
                 }
             });
 
-            //mMap.onCreate(null);
+            mMap.onCreate(null);
             mMap.getMapAsync(this);
         }
 
-        public void setMapLocation(MapLocation mapLocation) {
+        public synchronized void setMapLocation(MapLocation mapLocation) {
             mMapLocation = mapLocation;
             // If the map is ready, update its content.
             if (mGoogleMap != null) {
-                updateMapContents();
+                updateMapContents(mapLocation);
             }
         }
 
@@ -80,22 +80,24 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
         @Override
         public void onMapReady(GoogleMap googleMap) {
             mGoogleMap = googleMap;
+
             MapsInitializer.initialize(mContext);
+            googleMap.getUiSettings().setMapToolbarEnabled(false);
 
             // If we have map data, update the map content.
             if (mMapLocation != null) {
-                updateMapContents();
+                updateMapContents(mMapLocation);
             }
         }
 
-        protected void updateMapContents() {
+        protected synchronized void  updateMapContents(MapLocation mapLocation) {
             // Since the mapView is re-used, need to remove pre-existing mapView features.
-            mGoogleMap.clear();
+            //mGoogleMap.clear();
 
             // Update the mapView feature data and camera position.
-            mGoogleMap.addMarker(new MarkerOptions().position(mMapLocation.getCenter()));
+            mGoogleMap.addMarker(new MarkerOptions().position(mapLocation.getCenter()));
 
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mMapLocation.getCenter(), 18f);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(mapLocation.getCenter(), 16f);
             mGoogleMap.moveCamera(cameraUpdate);
         }
     }

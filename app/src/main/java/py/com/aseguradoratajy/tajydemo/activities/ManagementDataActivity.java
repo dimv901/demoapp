@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.fragments.BranchFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
@@ -21,7 +22,6 @@ import py.com.aseguradoratajy.tajydemo.utiles.ViewPagerAdapter;
 public class ManagementDataActivity extends AppCompatActivity implements
         ProductsFragments.OnItemProductsListenerSelected,
         ServicesFragments.OnItemServicesListenerSelected,
-        LoginAccountFragment.OnItemAccountListenerSelected,
         ContactSupportFragment.OnItemContactSupportListenerSelected {
 
     private Toolbar toolbar;
@@ -48,18 +48,22 @@ public class ManagementDataActivity extends AppCompatActivity implements
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_product:
+                            case R.id.action_account:
                                 mViewPager.setCurrentItem(0);
                                 break;
-                            case R.id.action_services:
+                            case R.id.action_product:
                                 mViewPager.setCurrentItem(1);
                                 break;
-                            case R.id.action_account:
+                            case R.id.action_services:
                                 mViewPager.setCurrentItem(2);
                                 break;
-                            case R.id.action_contact:
+                            case R.id.action_branches:
                                 mViewPager.setCurrentItem(3);
                                 break;
+                            case R.id.action_contact:
+                                mViewPager.setCurrentItem(4);
+                                break;
+
                         }
                         return false;
                     }
@@ -96,9 +100,10 @@ public class ManagementDataActivity extends AppCompatActivity implements
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFrag(LoginAccountFragment.newInstance());
         adapter.addFrag(ProductsFragments.newInstance());
         adapter.addFrag(ServicesFragments.newInstance());
-        adapter.addFrag(LoginAccountFragment.newInstance());
+        adapter.addFrag(BranchFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
@@ -111,11 +116,6 @@ public class ManagementDataActivity extends AppCompatActivity implements
 
     @Override
     public void onItemServicesListenerSelected(Service service) {
-
-    }
-
-    @Override
-    public void onItemAccountListenerSelected() {
 
     }
 

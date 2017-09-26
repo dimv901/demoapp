@@ -4,6 +4,7 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="@dimen/default_padding_card"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <android.support.v7.widget.CardView
@@ -11,42 +12,67 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/default_margin"
+        android:padding="@dimen/default_padding_card"
         card_view:cardCornerRadius="@dimen/corner_round">
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:padding="@dimen/default_padding_card"
             android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/insurance_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="TextView" />
 
             <ImageView
                 android:id="@+id/insurance_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/default_padding" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/insurance_number"
+                android:padding="@dimen/default_padding"
+                />
 
             <TextView
                 android:id="@+id/insurance_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="15dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/default_margin"
+                android:layout_below="@+id/insurance_number"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
                 android:layout_toEndOf="@+id/insurance_icon"
                 android:layout_toRightOf="@+id/insurance_icon"
                 android:text="TextView" />
 
-            <ImageView
-                android:id="@+id/insurance_icon_detail"
+            <TextView
+                android:id="@+id/insurance_subdescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:padding="@dimen/default_padding"
-                app:srcCompat="@mipmap/ic_keyboard_arrow_down_black_24dp" />
+                android:layout_alignLeft="@+id/insurance_description"
+                android:layout_alignStart="@+id/insurance_description"
+                android:layout_below="@+id/insurance_description"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/insurance_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/insurance_icon"
+                android:layout_alignEnd="@+id/insurance_number"
+                android:layout_alignRight="@+id/insurance_number"
+                android:text="TextView"
+                android:textColor="@color/colorGreen"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
 
 </android.support.design.widget.CoordinatorLayout>

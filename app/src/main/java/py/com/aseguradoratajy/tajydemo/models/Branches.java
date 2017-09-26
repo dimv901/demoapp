@@ -29,7 +29,7 @@ public class Branches {
     public static List<Branches> getInstance() {
         List<Branches> mList = new ArrayList<>();
 
-        Branches branch1 = new Branches("Casa Matriz", 1, "(021) 689 1000", "Avda. San Martín N° 1243 esq. Agustín Barrios", new LatLng(-25.230798778776, -57.533887624741));
+        Branches branch1 = new Branches("Casa Matriz", 1, "(021) 689 1000", "Avda. San Martín N° 1243 esq. Agustín Barrios", new LatLng(-25.2852672,-57.5726114));
         Branches branch2 = new Branches("Centro de Atención Integral - CAI", 2, "(021) 689 1000", "Avda. Eusebio Ayala N° 2496 esq. Tte. 1° Julián Riquelme", new LatLng(-25.310317248784, -57.590020895004));
         Branches branch3 = new Branches("Sucursal Katueté", 3, "(021) 689 1000 - int 530", "Ruta Internacional N°10 - Avda. Las Residentas c/ Padre Fidel Maíz", new LatLng(-24.245712403635, -54.757232666016));
 

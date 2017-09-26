@@ -1,9 +1,11 @@
 package py.com.aseguradoratajy.tajydemo.utils;
 
+import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -43,5 +45,9 @@ public class Utiles {
         df.applyPattern("###,###.###");
         String output = df.format(data);
         return output;
+    }
+
+    public static void getToast(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }

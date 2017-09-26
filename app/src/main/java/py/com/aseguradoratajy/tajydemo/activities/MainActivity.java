@@ -3,27 +3,27 @@ package py.com.aseguradoratajy.tajydemo.activities;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import py.com.aseguradoratajy.tajydemo.R;
-
-import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.adapters.InsuranceAdapter;
+import py.com.aseguradoratajy.tajydemo.models.Insurance;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener{
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
     private CoordinatorLayout mCoordinatorLayoutView;
-
-
 
 
     @Override
@@ -35,7 +35,13 @@ public class MainActivity extends AppCompatActivity
         navigationDrawerView();
         mCoordinatorLayoutView = (CoordinatorLayout) findViewById(R.id.main_coordinator_layout);
 
-
+        RecyclerView mInsuranceRecyclerView = (RecyclerView) findViewById(R.id.insurance_list);
+        mInsuranceRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mInsuranceRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
+        mInsuranceRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mInsuranceRecyclerView.setHasFixedSize(true);
+        InsuranceAdapter mAdapter = new InsuranceAdapter(getApplicationContext(), Insurance.getInstance());
+        mInsuranceRecyclerView.setAdapter(mAdapter);
 
     }
 
@@ -50,7 +56,6 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
-
 
 
     @Override
@@ -93,7 +98,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_account) {
             // Handle the camera action
-        }else if(id == R.id.nav_close_session){
+        } else if (id == R.id.nav_close_session) {
 
         }
 

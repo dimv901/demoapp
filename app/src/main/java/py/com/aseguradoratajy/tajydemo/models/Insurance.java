@@ -1,7 +1,6 @@
 package py.com.aseguradoratajy.tajydemo.models;
 
-import com.bignerdranch.expandablerecyclerview.Model.ParentListItem;
-
+import java.util.ArrayList;
 import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
@@ -10,28 +9,33 @@ import py.com.aseguradoratajy.tajydemo.R;
  * Created by Diego on 9/24/2017.
  */
 
-public class Insurance implements ParentListItem {
+public class Insurance {
 
     public String number;
-    private String insuranceType;
     private int icon;
     private int insuranceAmount;
-    private List<InsuranceDetail> detail;
-    private List<AccountBalance> accountBalance;
     private String expiration;
+    private String description;
+    private String subdescription;
+    private boolean active;
 
-    public static Insurance getInstance() {
-        return new Insurance("N-0501-86245-0", "SEGURO VEHICULO", R.mipmap.ic_launcher, 25000000, InsuranceDetail.getInstance(), AccountBalance.getInstance(), "01/01/2018");
+    public static List<Insurance> getInstance() {
+        List<Insurance> mList = new ArrayList<>();
+        Insurance i1 = new Insurance("POLIZA N°: N-0501-86245-0", R.mipmap.ic_insurance_car, 25000000, "01/01/2018", "TOYOTA VITZ", "PATENTE: BRB450", true);
+        Insurance i2 = new Insurance("POLIZA N°: N-0501-86245-1", R.mipmap.ic_insurance_life, 150000000, "01/01/2018", "DIEGO IVAN MALDONADO", "SEGURO INDIVIDUAL", true);
+        mList.add(i1);
+        mList.add(i2);
+        return mList;
     }
 
-    public Insurance(String number, String insuranceType, int icon, int insuranceAmount, List<InsuranceDetail> detail, List<AccountBalance> accountBalance, String expiration) {
+    public Insurance(String number, int icon, int insuranceAmount, String expiration, String description, String subdescription, boolean active) {
         this.number = number;
-        this.insuranceType = insuranceType;
         this.icon = icon;
         this.insuranceAmount = insuranceAmount;
-        this.detail = detail;
-        this.accountBalance = accountBalance;
         this.expiration = expiration;
+        this.description = description;
+        this.subdescription = subdescription;
+        this.active = active;
     }
 
     public String getNumber() {
@@ -40,14 +44,6 @@ public class Insurance implements ParentListItem {
 
     public void setNumber(String number) {
         this.number = number;
-    }
-
-    public String getInsuranceType() {
-        return insuranceType;
-    }
-
-    public void setInsuranceType(String insuranceType) {
-        this.insuranceType = insuranceType;
     }
 
     public int getIcon() {
@@ -66,22 +62,6 @@ public class Insurance implements ParentListItem {
         this.insuranceAmount = insuranceAmount;
     }
 
-    public List<InsuranceDetail> getDetail() {
-        return detail;
-    }
-
-    public void setDetail(List<InsuranceDetail> detail) {
-        this.detail = detail;
-    }
-
-    public List<AccountBalance> getAccountBalance() {
-        return accountBalance;
-    }
-
-    public void setAccountBalance(List<AccountBalance> accountBalance) {
-        this.accountBalance = accountBalance;
-    }
-
     public String getExpiration() {
         return expiration;
     }
@@ -90,13 +70,27 @@ public class Insurance implements ParentListItem {
         this.expiration = expiration;
     }
 
-    @Override
-    public List<?> getChildItemList() {
-        return detail;
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public boolean isInitiallyExpanded() {
-        return false;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSubdescription() {
+        return subdescription;
+    }
+
+    public void setSubdescription(String subdescription) {
+        this.subdescription = subdescription;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

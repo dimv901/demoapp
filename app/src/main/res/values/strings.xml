@@ -50,6 +50,7 @@
     <string name="tab_services">Servicios</string>
     <string name="tab_account">Mi Cuenta</string>
     <string name="tab_contact_mail">Contáctenos</string>
+    <string name="tab_branches">Sucursales</string>
     <string name="title_activity_managment_data">ManagmentDataActivity</string>
 
     <!-- Contact Support Fragment strings-->
@@ -68,4 +69,7 @@ compañía telefónica</string>
     <string name="label_mail">Correo Electrónico</string>
     <string name="label_issues">Asunto</string>
     <string name="label_message">Mensaje</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
