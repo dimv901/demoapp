@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_account"
+        android:checked="false"
+        android:icon="@mipmap/ic_account_circle_black_36dp"
+        android:title="@string/tab_account"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/action_product"
         android:checked="true"
@@ -13,12 +21,6 @@
         android:icon="@mipmap/ic_chrome_reader_mode_black_36dp"
         android:title="@string/tab_services"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_account"
-        android:checked="false"
-        android:icon="@mipmap/ic_account_circle_black_36dp"
-        android:title="@string/tab_account"
-        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_contact"
@@ -26,4 +28,11 @@
         android:icon="@mipmap/ic_email_black_36dp"
         android:title="@string/tab_contact_mail"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_report_sinister"
+        android:checked="false"
+        android:icon="@mipmap/ic_whatshot_black_36dp"
+        android:title="@string/tab_report_sinister"
+        app:showAsAction="ifRoom" />
+
 </menu>

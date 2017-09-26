@@ -14,6 +14,7 @@ import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
+import py.com.aseguradoratajy.tajydemo.fragments.ReportSinisterFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ServicesFragments;
 import py.com.aseguradoratajy.tajydemo.models.Products;
 import py.com.aseguradoratajy.tajydemo.utiles.ViewPagerAdapter;
@@ -22,7 +23,8 @@ public class ManagementDataActivity extends AppCompatActivity implements
         ProductsFragments.OnItemProductsListenerSelected,
         ServicesFragments.OnItemServicesListenerSelected,
         LoginAccountFragment.OnItemAccountListenerSelected,
-        ContactSupportFragment.OnItemContactSupportListenerSelected {
+        ContactSupportFragment.OnItemContactSupportListenerSelected,
+        ReportSinisterFragment.OnItemSinisterListenerSelected{
 
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
@@ -48,17 +50,20 @@ public class ManagementDataActivity extends AppCompatActivity implements
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_product:
+                            case R.id.action_account:
                                 mViewPager.setCurrentItem(0);
                                 break;
-                            case R.id.action_services:
+                            case R.id.action_product:
                                 mViewPager.setCurrentItem(1);
                                 break;
-                            case R.id.action_account:
+                            case R.id.action_services:
                                 mViewPager.setCurrentItem(2);
                                 break;
                             case R.id.action_contact:
                                 mViewPager.setCurrentItem(3);
+                                break;
+                            case R.id.action_report_sinister:
+                                mViewPager.setCurrentItem(4);
                                 break;
                         }
                         return false;
@@ -100,6 +105,7 @@ public class ManagementDataActivity extends AppCompatActivity implements
         adapter.addFrag(ServicesFragments.newInstance());
         adapter.addFrag(LoginAccountFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
+        adapter.addFrag(ReportSinisterFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
 
@@ -121,6 +127,11 @@ public class ManagementDataActivity extends AppCompatActivity implements
 
     @Override
     public void onItemContactSupportListenerSelected() {
+
+    }
+
+    @Override
+    public void onItemSinisterListenerSelected(Products products) {
 
     }
 }

@@ -43,6 +43,7 @@
     <string name="tag_cancel">Cancelar</string>
     <string name="tag_delete">Eliminar</string>
     <string name="tag_back">Atrás</string>
+    <string name="success_message">Operación realizada exitosamente</string>
 
 
     <!-- tabs navigation-->
@@ -50,10 +51,11 @@
     <string name="tab_services">Servicios</string>
     <string name="tab_account">Mi Cuenta</string>
     <string name="tab_contact_mail">Contáctenos</string>
+    <string name="tab_report_sinister">Siniestro</string>
     <string name="title_activity_managment_data">ManagmentDataActivity</string>
 
     <!-- Contact Support Fragment strings-->
-    <string name="label_name">Nombre</string>
+    <string name="label_name_last_name">Nombre y Apellido</string>
     <string name="label_last_name">Apellido</string>
     <string name="label_contact_support">Contáctenos</string>
     <string name="message_suport">
@@ -68,4 +70,5 @@ compañía telefónica</string>
     <string name="label_mail">Correo Electrónico</string>
     <string name="label_issues">Asunto</string>
     <string name="label_message">Mensaje</string>
+    <string name="label_contact_title">Contácto</string>
 </resources>
