@@ -15,11 +15,21 @@
         android:icon="@mipmap/ic_home_black_36dp"
         android:title="@string/tab_products"
         app:showAsAction="ifRoom" />
+
+    <!--
     <item
         android:id="@+id/action_services"
         android:checked="false"
         android:icon="@mipmap/ic_chrome_reader_mode_black_36dp"
         android:title="@string/tab_services"
+        app:showAsAction="ifRoom" />
+
+-->
+    <item
+        android:id="@+id/action_branches"
+        android:checked="false"
+        android:icon="@mipmap/ic_place_black_36dp"
+        android:title="@string/tab_branches"
         app:showAsAction="ifRoom" />
 
     <item

@@ -25,8 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         mCoordinator = (CoordinatorLayout) findViewById(R.id.login_coordinator);
         inputDocument = (EditText) findViewById(R.id.login_input_document);
         inputPassword = (EditText) findViewById(R.id.login_input_password);

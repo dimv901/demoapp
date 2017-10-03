@@ -20,9 +20,10 @@ import py.com.aseguradoratajy.tajydemo.fragments.ServicesFragments;
 import py.com.aseguradoratajy.tajydemo.models.Products;
 import py.com.aseguradoratajy.tajydemo.utiles.ViewPagerAdapter;
 
-public class ManagementDataActivity extends AppCompatActivity implements
+public class NavigationActivity extends AppCompatActivity implements
         ProductsFragments.OnItemProductsListenerSelected,
         ServicesFragments.OnItemServicesListenerSelected,
+        ReportSinisterFragment.OnItemSinisterListenerSelected,
         ContactSupportFragment.OnItemContactSupportListenerSelected {
 
     private Toolbar toolbar;
@@ -34,7 +35,7 @@ public class ManagementDataActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_management_data);
+        setContentView(R.layout.activity_navigation);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,22 +56,18 @@ public class ManagementDataActivity extends AppCompatActivity implements
                             case R.id.action_product:
                                 mViewPager.setCurrentItem(1);
                                 break;
-                            case R.id.action_services:
+                         /*   case R.id.action_services:
+                                mViewPager.setCurrentItem(2);
+                                break;*/
+                            case R.id.action_branches:
                                 mViewPager.setCurrentItem(2);
                                 break;
-                            case R.id.action_branches:
+                            case R.id.action_contact:
                                 mViewPager.setCurrentItem(3);
                                 break;
-<<<<<<< HEAD
-                            case R.id.action_contact:
-                                mViewPager.setCurrentItem(4);
-                                break;
-
-=======
                             case R.id.action_report_sinister:
                                 mViewPager.setCurrentItem(4);
                                 break;
->>>>>>> bfe3941ee46d37245f27679599e922436a0625ea
                         }
                         return false;
                     }
@@ -109,7 +106,7 @@ public class ManagementDataActivity extends AppCompatActivity implements
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(LoginAccountFragment.newInstance());
         adapter.addFrag(ProductsFragments.newInstance());
-        adapter.addFrag(ServicesFragments.newInstance());
+        //adapter.addFrag(ServicesFragments.newInstance());
         adapter.addFrag(BranchFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
         adapter.addFrag(ReportSinisterFragment.newInstance());

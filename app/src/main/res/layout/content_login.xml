@@ -18,9 +18,7 @@
         android:id="@+id/login_imageview_banner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginTop="32dp"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -134,12 +132,12 @@
             android:theme="@style/MyCustomFlatButton" />
     </android.support.v7.widget.ButtonBarLayout>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView_linea_banner"
+        android:layout_width="336dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:src="@mipmap/ic_line_banner"
+        tools:layout_editor_absoluteY="-11dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 </android.support.constraint.ConstraintLayout>

@@ -54,7 +54,7 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
             mBranchName = (TextView) itemView.findViewById(R.id.branch_item_name);
             mBranchAddress = (TextView) itemView.findViewById(R.id.branch_item_address);
             mBranchPhone = (TextView) itemView.findViewById(R.id.branch_item_phone);
-            mBranchCall= (FloatingActionButton) itemView.findViewById(R.id.branch_item_fab);
+            mBranchCall = (FloatingActionButton) itemView.findViewById(R.id.branch_item_fab);
             mMap = (MapView) itemView.findViewById(R.id.branch_item_map);
 
             mBranchCall.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +90,9 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
             }
         }
 
-        protected synchronized void  updateMapContents(MapLocation mapLocation) {
+        protected synchronized void updateMapContents(MapLocation mapLocation) {
             // Since the mapView is re-used, need to remove pre-existing mapView features.
-            //mGoogleMap.clear();
+            mGoogleMap.clear();
 
             // Update the mapView feature data and camera position.
             mGoogleMap.addMarker(new MarkerOptions().position(mapLocation.getCenter()));

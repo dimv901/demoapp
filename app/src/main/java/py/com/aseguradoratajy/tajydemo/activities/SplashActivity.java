@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run()
             {
                 SplashActivity.this.finish();
-                startActivity(new Intent(SplashActivity.this, ManagementDataActivity.class));
+                startActivity(new Intent(SplashActivity.this, NavigationActivity.class));
             }
         }, DELAY);
         scheduled = true;
