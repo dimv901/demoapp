@@ -7,6 +7,10 @@
     <string name="action_route">Cómo llegar?</string>
     <string name="action_call">Llamar</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="label_message_welcome">Bienvenido a Tajy Móvil</string>
+    <string name="error_parsing_json">Error al convertir respuesta</string>
+    <string name="error_invalid_response">Error, respuesta invalída</string>
+
 
     <string name="prompt_document">Documento</string>
     <string name="prompt_password">Clave</string>
@@ -75,4 +79,18 @@ compañía telefónica</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_contact_title">Contácto</string>
+
+
+    <!--Volley Network Error -->
+    <string name="volley_no_connection_error">No posee conexión a internet, favor verifiquela.</string>
+    <string name="volley_network_error">Intento de conexión con el servidor fallida, favor intente de nuevo.</string>
+    <string name="volley_server_error">Error de servidor, favor intente de nuevo.</string>
+    <string name="volley_authentication_error">Error de Autenticación.</string>
+    <string name="volley_auth_error">Error al autenticarse en el servidor.</string>
+    <string name="volley_parse_error">Error al capturar la respuesta.</string>
+    <string name="error_invalid_credentials">Credenciales incorrectas.</string>
+    <string name="error_expired_session">Sesión Expirada</string>
+    <string name="dialog_error_unexpected">Error inesperado</string>
+    <string name="volley_time_out_error">Tiempo de espera de conexión agotado.</string>
+    <string name="volley_default_error">Error inesperado, favor intente de vuelta.</string>
 </resources>

@@ -37,7 +37,7 @@
         android:ems="10"
         android:hint="@string/prompt_document"
         android:imeOptions="actionNext"
-        android:inputType="text"
+        android:inputType="phone"
         android:maxLines="1"
         android:paddingBottom="@dimen/edit_text_padding"
         android:paddingEnd="@dimen/edit_text_padding"
@@ -64,7 +64,7 @@
         android:drawableStart="@mipmap/ic_lock_white_24dp"
         android:ems="10"
         android:hint="@string/prompt_password"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         android:paddingBottom="@dimen/edit_text_padding"
         android:paddingEnd="@dimen/edit_text_padding"
         android:paddingLeft="@dimen/edit_text_left_drawable_padding"
@@ -92,7 +92,8 @@
         app:layout_constraintTop_toBottomOf="@+id/login_input_password"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintHorizontal_bias="0.0" />
 
     <android.support.v7.widget.ButtonBarLayout
         android:layout_width="0dp"
