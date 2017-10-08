@@ -210,9 +210,9 @@ public class LoginAccountFragment extends Fragment {
                         return;
                     }
 
-
                     AppPreferences.getAppPreferences(getContext()).edit().putBoolean(AppPreferences.KEY_LOGGED_IN, true).apply();
                     AppPreferences.getAppPreferences(getContext()).edit().putString(AppPreferences.KEY_USERNAME, user).apply();
+                    AppPreferences.getAppPreferences(getContext()).edit().putString(AppPreferences.KEY_PASSWORD, mPassword).apply();
 
                     Utiles.getToast(getContext(), getString(R.string.label_message_welcome));
                     getActivity().finish();

@@ -10,6 +10,7 @@
     <string name="label_message_welcome">Bienvenido a Tajy Móvil</string>
     <string name="error_parsing_json">Error al convertir respuesta</string>
     <string name="error_invalid_response">Error, respuesta invalída</string>
+    <string name="tag_not_internet">La aplicación necesita internet, favor actívela</string>
 
 
     <string name="prompt_document">Documento</string>
@@ -27,11 +28,20 @@
     <string name="prompt_model">Modelo</string>
     <string name="prompt_insurance_amount">Suma Asegurada</string>
     <string name="prompt_vencimiento">Vencimiento</string>
+    
+    <!-- Policy item-->
+    <string name="tag_policy_type">Tipo: </string>
+    <string name="tag_policy_amount">Monto: </string>
+    <string name="tag_policy_code">Número de póliza: </string>
+    <string name="tag_fee">Cuota: </string>
+    <string name="tag_date_from">Desde: </string>
+    <string name="tag_date_to">Hasta: </string>
 
     <string name="error_empty_field">Debes completar el campo.</string>
     <string name="error_login">Usuario o clave incorrectos.</string>
     <string name="title_activity_branch_activities">BranchActivities</string>
     <string name="title_activity_insurance">InsuranceActivity</string>
+    <string name="error_empty_insurance_policy">No posees polizas para mostrar</string>
 
 
     <!-- Navigation Drawer Strings-->

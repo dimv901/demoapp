@@ -1,6 +1,6 @@
 package py.com.aseguradoratajy.tajydemo.activities;
 
-import android.app.Service;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,13 +16,12 @@ import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
 import py.com.aseguradoratajy.tajydemo.fragments.ReportSinisterFragment;
-import py.com.aseguradoratajy.tajydemo.fragments.ServicesFragments;
 import py.com.aseguradoratajy.tajydemo.models.Products;
-import py.com.aseguradoratajy.tajydemo.utiles.ViewPagerAdapter;
+import py.com.aseguradoratajy.tajydemo.utils.AppPreferences;
+import py.com.aseguradoratajy.tajydemo.utils.ViewPagerAdapter;
 
 public class NavigationActivity extends AppCompatActivity implements
         ProductsFragments.OnItemProductsListenerSelected,
-        ServicesFragments.OnItemServicesListenerSelected,
         ReportSinisterFragment.OnItemSinisterListenerSelected,
         ContactSupportFragment.OnItemContactSupportListenerSelected {
 
@@ -38,7 +37,7 @@ public class NavigationActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_navigation);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        checkInSession();
         mCoordinatorLayoutView = (CoordinatorLayout) findViewById(R.id.main_coordinator_layout);
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -56,9 +55,6 @@ public class NavigationActivity extends AppCompatActivity implements
                             case R.id.action_product:
                                 mViewPager.setCurrentItem(1);
                                 break;
-                         /*   case R.id.action_services:
-                                mViewPager.setCurrentItem(2);
-                                break;*/
                             case R.id.action_branches:
                                 mViewPager.setCurrentItem(2);
                                 break;
@@ -101,12 +97,20 @@ public class NavigationActivity extends AppCompatActivity implements
 
     }
 
+    private void checkInSession(){
+        if (AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN,true)){
+            startActivity(new Intent(NavigationActivity.this,MainActivity.class));
+            finish();
+        }else {
+            AppPreferences.getAppPreferences(this).edit().clear().apply();
+        }
+    }
+
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(LoginAccountFragment.newInstance());
         adapter.addFrag(ProductsFragments.newInstance());
-        //adapter.addFrag(ServicesFragments.newInstance());
         adapter.addFrag(BranchFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
         adapter.addFrag(ReportSinisterFragment.newInstance());
@@ -119,10 +123,6 @@ public class NavigationActivity extends AppCompatActivity implements
 
     }
 
-    @Override
-    public void onItemServicesListenerSelected(Service service) {
-
-    }
 
     @Override
     public void onItemContactSupportListenerSelected() {

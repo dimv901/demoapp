@@ -13,6 +13,7 @@ public class AppPreferences {
     public static final String APP_PREFERENCES = "APP_PREFERENCES";
     public static final String KEY_LOGGED_IN = "KEY_LOGGED_IN";
     public static final String KEY_USERNAME = "KEY_USERNAME";
+    public static final String KEY_PASSWORD = "KEY_PASSWORD";
 
     public static SharedPreferences getAppPreferences(Context context) {
         if (appPreferences == null) {

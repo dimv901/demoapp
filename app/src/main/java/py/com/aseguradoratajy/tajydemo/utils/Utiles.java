@@ -1,6 +1,8 @@
 package py.com.aseguradoratajy.tajydemo.utils;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -115,6 +117,20 @@ public class Utiles {
 
         }
         return message;
+    }
+
+    public static boolean checkNetworkConnection(Context context) {
+        boolean isConnected = false;
+        try {
+            ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isConnected()) {
+                isConnected = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isConnected;
     }
 
 }

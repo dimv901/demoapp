@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/TajyDemo.iml" filepath="$PROJECT_DIR$/TajyDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoapp.iml" filepath="$PROJECT_DIR$/demoapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mydaogenerator/mydaogenerator.iml" filepath="$PROJECT_DIR$/mydaogenerator/mydaogenerator.iml" />
     </modules>
   </component>
 </project>

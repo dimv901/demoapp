@@ -11,55 +11,163 @@ import py.com.aseguradoratajy.tajydemo.R;
 
 public class Insurance {
 
-    public String number;
-    private int icon;
-    private int insuranceAmount;
+    private String identifyCard;
+    private Integer sctionCode;
+    private String sectionDescription;
+    private String policy;
+    private String endorsement;
+    private String feeDetails;
+    private String ruc;
+    private String insured;
+    private String comercialPhone;
+    private String comercialAddress;
+    private String particularAddress;
+    private String dateFrom;
+    private String dateTo;
+    private String issue;
     private String expiration;
-    private String description;
-    private String subdescription;
-    private boolean active;
+    private String amount;
+    private String payment;
+    private String balance;
+    private String lastPayment;
 
-    public static List<Insurance> getInstance() {
-        List<Insurance> mList = new ArrayList<>();
-        Insurance i1 = new Insurance("POLIZA N°: N-0501-86245-0", R.mipmap.ic_insurance_car, 25000000, "01/01/2018", "TOYOTA VITZ", "PATENTE: BRB450", true);
-        Insurance i2 = new Insurance("POLIZA N°: N-0501-86245-1", R.mipmap.ic_insurance_life, 150000000, "01/01/2018", "DIEGO IVAN MALDONADO", "SEGURO INDIVIDUAL", true);
-        mList.add(i1);
-        mList.add(i2);
-        return mList;
+    public Insurance(){
+
     }
 
-    public Insurance(String number, int icon, int insuranceAmount, String expiration, String description, String subdescription, boolean active) {
-        this.number = number;
-        this.icon = icon;
-        this.insuranceAmount = insuranceAmount;
+    public Insurance(String identifyCard, Integer sctionCode, String sectionDescription, String policy, String endorsement, String feeDetails, String ruc, String insured, String comercialPhone, String comercialAddress, String particularAddress, String dateFrom,
+                     String dateTo, String issue, String expiration, String amount, String payment, String balance, String lastPayment) {
+        this.identifyCard = identifyCard;
+        this.sctionCode = sctionCode;
+        this.sectionDescription = sectionDescription;
+        this.policy = policy;
+        this.endorsement = endorsement;
+        this.feeDetails = feeDetails;
+        this.ruc = ruc;
+        this.insured = insured;
+        this.comercialPhone = comercialPhone;
+        this.comercialAddress = comercialAddress;
+        this.particularAddress = particularAddress;
+        this.dateFrom = dateFrom;
+        this.dateTo = dateTo;
+        this.issue = issue;
         this.expiration = expiration;
-        this.description = description;
-        this.subdescription = subdescription;
-        this.active = active;
+        this.amount = amount;
+        this.payment = payment;
+        this.balance = balance;
+        this.lastPayment = lastPayment;
     }
 
-    public String getNumber() {
-        return number;
+    public String getIdentifyCard() {
+        return identifyCard;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setIdentifyCard(String identifyCard) {
+        this.identifyCard = identifyCard;
     }
 
-    public int getIcon() {
-        return icon;
+    public Integer getSctionCode() {
+        return sctionCode;
     }
 
-    public void setIcon(int icon) {
-        this.icon = icon;
+    public void setSctionCode(Integer sctionCode) {
+        this.sctionCode = sctionCode;
     }
 
-    public int getInsuranceAmount() {
-        return insuranceAmount;
+    public String getSectionDescription() {
+        return sectionDescription;
     }
 
-    public void setInsuranceAmount(int insuranceAmount) {
-        this.insuranceAmount = insuranceAmount;
+    public void setSectionDescription(String sectionDescription) {
+        this.sectionDescription = sectionDescription;
+    }
+
+    public String getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(String policy) {
+        this.policy = policy;
+    }
+
+    public String getEndorsement() {
+        return endorsement;
+    }
+
+    public void setEndorsement(String endorsement) {
+        this.endorsement = endorsement;
+    }
+
+    public String getFeeDetails() {
+        return feeDetails;
+    }
+
+    public void setFeeDetails(String feeDetails) {
+        this.feeDetails = feeDetails;
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
+    public String getInsured() {
+        return insured;
+    }
+
+    public void setInsured(String insured) {
+        this.insured = insured;
+    }
+
+    public String getComercialPhone() {
+        return comercialPhone;
+    }
+
+    public void setComercialPhone(String comercialPhone) {
+        this.comercialPhone = comercialPhone;
+    }
+
+    public String getComercialAddress() {
+        return comercialAddress;
+    }
+
+    public void setComercialAddress(String comercialAddress) {
+        this.comercialAddress = comercialAddress;
+    }
+
+    public String getParticularAddress() {
+        return particularAddress;
+    }
+
+    public void setParticularAddress(String particularAddress) {
+        this.particularAddress = particularAddress;
+    }
+
+    public String getDateFrom() {
+        return dateFrom;
+    }
+
+    public void setDateFrom(String dateFrom) {
+        this.dateFrom = dateFrom;
+    }
+
+    public String getDateTo() {
+        return dateTo;
+    }
+
+    public void setDateTo(String dateTo) {
+        this.dateTo = dateTo;
+    }
+
+    public String getIssue() {
+        return issue;
+    }
+
+    public void setIssue(String issue) {
+        this.issue = issue;
     }
 
     public String getExpiration() {
@@ -70,27 +178,60 @@ public class Insurance {
         this.expiration = expiration;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
-    public String getSubdescription() {
-        return subdescription;
+    public String getPayment() {
+        return payment;
     }
 
-    public void setSubdescription(String subdescription) {
-        this.subdescription = subdescription;
+    public void setPayment(String payment) {
+        this.payment = payment;
     }
 
-    public boolean isActive() {
-        return active;
+    public String getBalance() {
+        return balance;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public String getLastPayment() {
+        return lastPayment;
+    }
+
+    public void setLastPayment(String lastPayment) {
+        this.lastPayment = lastPayment;
+    }
+
+    @Override
+    public String toString() {
+        return "Insurance{" +
+                "identifyCard='" + identifyCard + '\'' +
+                ", sctionCode='" + sctionCode + '\'' +
+                ", sectionDescription='" + sectionDescription + '\'' +
+                ", policy='" + policy + '\'' +
+                ", endorsement='" + endorsement + '\'' +
+                ", feeDetails='" + feeDetails + '\'' +
+                ", ruc='" + ruc + '\'' +
+                ", insured='" + insured + '\'' +
+                ", comercialPhone='" + comercialPhone + '\'' +
+                ", comercialAddress='" + comercialAddress + '\'' +
+                ", particularAddress='" + particularAddress + '\'' +
+                ", dateFrom='" + dateFrom + '\'' +
+                ", dateTo='" + dateTo + '\'' +
+                ", issue='" + issue + '\'' +
+                ", expiration='" + expiration + '\'' +
+                ", amount='" + amount + '\'' +
+                ", payment='" + payment + '\'' +
+                ", balance='" + balance + '\'' +
+                ", lastPayment='" + lastPayment + '\'' +
+                '}';
     }
 }

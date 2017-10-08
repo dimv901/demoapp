@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.models.Insurance;
+import py.com.aseguradoratajy.tajydemo.models.MapPolicyAccount;
+import py.com.aseguradoratajy.tajydemo.utils.Utiles;
 
 /**
  * Created by Diego on 9/25/2017.
@@ -37,16 +40,13 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
     @Override
     public void onBindViewHolder(InsuranceViewHolder holder, int position) {
         Insurance i = mListInsurance.get(position);
-        holder.mNumber.setText(i.getNumber().toUpperCase());
-        holder.mDescription.setText(i.getDescription().toUpperCase());
-        holder.mSubDescription.setText(i.getSubdescription().toUpperCase());
-        if (i.isActive()) {
-            holder.mStatus.setText("VIGENTE");
-        } else {
-            holder.mStatus.setText("EXPIRADO");
-
-        }
-        holder.mIcon.setBackgroundResource(i.getIcon());
+        holder.mPolicyCode.setText(i.getPolicy().toUpperCase());
+        holder.mPolicyType.setText(i.getSectionDescription().toUpperCase());
+        holder.mFeePolicy.setText(i.getFeeDetails());
+        holder.mAmount.setText(i.getAmount().toUpperCase());
+        holder.mDateFrom.setText(i.getDateFrom());
+        holder.mDateTo.setText(i.getDateTo());
+        holder.mIcon.setBackgroundResource(MapPolicyAccount.policyIconType(i.getSctionCode()));
 
     }
 
@@ -56,21 +56,30 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
     }
 
     public class InsuranceViewHolder extends RecyclerView.ViewHolder {
-        TextView mSubDescription;
-        TextView mDescription;
-        TextView mStatus;
-        TextView mNumber;
+        TextView mPolicyCode;
+        TextView mPolicyType;
+        TextView mFeePolicy;
+        TextView mAmount;
+        TextView mDateFrom;
+        TextView mDateTo;
         ImageView mIcon;
 
         public InsuranceViewHolder(View view) {
             super(view);
-            mNumber = (TextView) view.findViewById(R.id.insurance_number);
-            mDescription = (TextView) view.findViewById(R.id.insurance_description);
-            mSubDescription = (TextView) view.findViewById(R.id.insurance_subdescription);
-            mStatus = (TextView) view.findViewById(R.id.insurance_status);
-            mNumber = (TextView) view.findViewById(R.id.insurance_number);
-            mIcon = (ImageView) view.findViewById(R.id.insurance_icon);
+            mPolicyCode = (TextView) view.findViewById(R.id.policy_code_value);
+            mPolicyType = (TextView) view.findViewById(R.id.policy_type_value);
+            mFeePolicy = (TextView) view.findViewById(R.id.policy_fee_value);
+            mAmount = (TextView) view.findViewById(R.id.policy_amount_value);
+            mDateFrom = (TextView) view.findViewById(R.id.date_from_policy_value);
+            mDateTo = (TextView) view.findViewById(R.id.date_to_policy_value);
+            mIcon = (ImageView) view.findViewById(R.id.policy_type_icon);
         }
+    }
+
+    public void setData(List<Insurance> data) {
+        mListInsurance = new ArrayList<>();
+        mListInsurance.addAll(data);
+        notifyDataSetChanged();
     }
 
 }

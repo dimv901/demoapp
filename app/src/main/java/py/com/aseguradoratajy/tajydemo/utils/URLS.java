@@ -7,4 +7,5 @@ package py.com.aseguradoratajy.tajydemo.utils;
 public class URLS {
 
     public static final String LOGIN_URL = "http://192.168.0.13:8090/TajyAppServices/webresources/usuarios/login";
+    public static final String POLICY_ACCOUNT_URL = "http://192.168.0.13:8090/TajyAppServices/webresources/avaya/polizasEstadoCuenta";
 }

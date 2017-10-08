@@ -82,6 +82,7 @@ public class NetworkQueue {
         StringBuilder sb = new StringBuilder();
         int statusCode;
 
+        Log.d(TAG_CLASS,"response_error: "+error.getMessage());
         if (response == null) {
             if (error instanceof NoConnectionError) {
                 message = context.getResources().getString(R.string.volley_no_connection_error);
@@ -99,16 +100,15 @@ public class NetworkQueue {
         } else {
 
             try {
+                message = new String(response.data);
+                Log.d("TAG","RESPOSNSE_MESSAGE: "+message);
                 JSONObject jsonObject = new JSONObject(new String(response.data));
-                statusCode = response.statusCode;
-                if (jsonObject.has("message")) {
-                    sb.append(jsonObject.getString("message"));
-                    sb.append(" code: ").append(statusCode);
+                if (jsonObject.has("desRetorno")) {
+                    message = jsonObject.getString("desRetorno");
                 }
-                message = sb.toString();
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
-                message = context.getString(R.string.volley_default_error);
+                message = context.getString(R.string.dialog_error_unexpected) + e.getMessage();
             }
         }
         Log.w(TAG_CLASS, message);
