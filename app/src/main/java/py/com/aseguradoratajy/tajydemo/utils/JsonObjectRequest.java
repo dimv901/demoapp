@@ -90,6 +90,12 @@ public class JsonObjectRequest extends JsonRequest<JSONObject> {
                 listener, errorListener);
     }
 
+    @Override
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        Map<String, String> headers = new HashMap<String, String>();
+        //headers.put("Content-Type", "application/json; charset=utf-8");
+        return headers!= null ? headers : super.getHeaders();
+    }
 
 
     @Override

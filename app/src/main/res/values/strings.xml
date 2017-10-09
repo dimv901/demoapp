@@ -48,6 +48,7 @@
     <string name="tag_balance">Saldo: </string>
     <string name="tag_last_payment">Último pago: </string>
     <string name="tag_options">Opciones</string>
+    <string name="tagl_account_data">Datos de la cuenta</string>
     <string name="label_selected_options">Selecciona una opción</string>
     <array name="policy_options">
         <item>Detalle de polizas</item>

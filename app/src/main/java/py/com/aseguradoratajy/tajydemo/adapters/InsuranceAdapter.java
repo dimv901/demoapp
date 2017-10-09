@@ -61,7 +61,6 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         holder.mIcon.setBackgroundResource(MapPolicyAccount.policyIconType(i.getSectionCode()));
 
 
-
     }
 
     @Override
@@ -99,12 +98,13 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
         mListInsurance.addAll(data);
         notifyDataSetChanged();
     }
+
     public Insurance getItemAtPosition(int position) {
         return mListInsurance.get(position);
     }
 
     private void optionsDialog(final Insurance insuranceObject) {
-       AlertDialog.Builder builder = new  AlertDialog.Builder(mContext);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
         builder.setIcon(R.mipmap.ic_touch_app_black_36dp);
         builder.setTitle(mContext.getString(R.string.tag_options))
                 .setItems(R.array.policy_options, new DialogInterface.OnClickListener() {
@@ -150,7 +150,7 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
     private void accountPolicyDetails(Insurance insurance) {
         StringBuilder stringBuilder = new StringBuilder();
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(mContext.getString(R.string.tag_options));
+        builder.setTitle(mContext.getString(R.string.tagl_account_data));
         builder.setIcon(R.mipmap.ic_face_black_36dp);
         stringBuilder.append("Cédula: ").append(insurance.getIdentifyCard()).append("\n")
                 .append("Ruc: ").append(insurance.getRuc()).append("\n")

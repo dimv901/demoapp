@@ -144,7 +144,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_account) {
             // Handle the camera action
         } else if (id == R.id.nav_close_session) {
+            finish();
             startActivity(new Intent(MainActivity.this, NavigationActivity.class));
+            InsuranceRepository.clearAll();
             AppPreferences.getAppPreferences(this).edit().clear().apply();
         }
 

@@ -30,15 +30,15 @@ public class Branches {
         List<Branches> mList = new ArrayList<>();
 
         Branches branch1 = new Branches("Casa Matriz", 1, "(021) 689 1000", "Avda. San Martín N° 1243 esq. Agustín Barrios", new LatLng(-25.2852672,-57.5726114));
-        Branches branch2 = new Branches("Centro de Atención Integral - CAI", 2, "(021) 689 1000", "Avda. Eusebio Ayala N° 2496 esq. Tte. 1° Julián Riquelme", new LatLng(-25.310317248784, -57.590020895004));
-        Branches branch3 = new Branches("Sucursal Katueté", 3, "(021) 689 1000 - int 530", "Ruta Internacional N°10 - Avda. Las Residentas c/ Padre Fidel Maíz", new LatLng(-24.245712403635, -54.757232666016));
+        Branches branch2 = new Branches("Centro de Atención Integral - CAI", 2, "(021) 689 1000", "Avda. Eusebio Ayala N° 2496 esq. Tte. 1° Julián Riquelme", new LatLng(-25.3081886, -57.6003243));
+        Branches branch3 = new Branches("Sucursal Katueté", 3, "(021) 689 1000 - int 530", "Ruta Internacional N°10 - Avda. Las Residentas c/ Padre Fidel Maíz", new LatLng(-24.2474561, -54.7629216));
 
-        Branches branch4 = new Branches("Sucursal Encarnación", 4, " (021) 689 1000 - int 570", "Avda. Juan León Mallorquín c/ Cerro Corá", new LatLng(-27.254095464074, -55.920957326889));
-        Branches branch5 = new Branches("Sucursal Hohenau", 5, "(021) 689 1000 - int 560", "Avda. Osvaldo Tischler c/ Luis Alberto de Herrera", new LatLng(-27.08694483728, -55.651588439941));
+        Branches branch4 = new Branches("Sucursal Encarnación", 4, " (021) 689 1000 - int 570", "Avda. Juan León Mallorquín c/ Cerro Corá", new LatLng(-27.3344462, -55.8680659));
+        Branches branch5 = new Branches("Sucursal Hohenau", 5, "(021) 689 1000 - int 560", "Avda. Osvaldo Tischler c/ Luis Alberto de Herrera", new LatLng(-27.0701319, -55.6458485));
         Branches branch6 = new Branches("Sucursal Loma Plata", 6, "(021) 689 1000 - int 520", "Calle 3 de noviembre N° 1185 e/ Avda. Central y Eligio Ayala", new LatLng(-22.365475236044, -59.934689998627));
 
-        Branches branch7 = new Branches("Sucursal Santa Rita", 7, " (021) 689 1000 - int 540", "Avda. Carlos Antonio López c/ 14 de mayo, Galería Mercosur - Salón 2", new LatLng(-25.790463250961, -55.090534687042));
-        Branches branch8 = new Branches("Sucursal María Auxiliadora", 8, "(021) 689 1000 - int 550", "Dr. Juan León Mallorquín - Ruta 6, Km 117", new LatLng(-26.523728817301, -55.285606384277));
+        Branches branch7 = new Branches("Sucursal Santa Rita", 7, " (021) 689 1000 - int 540", "Avda. Carlos Antonio López c/ 14 de mayo, Galería Mercosur - Salón 2", new LatLng(-25.8008741, -55.0939314));
+        Branches branch8 = new Branches("Sucursal María Auxiliadora", 8, "(021) 689 1000 - int 550", "Dr. Juan León Mallorquín - Ruta 6, Km 117", new LatLng(-26.5386973, -55.2593616));
         Branches branch9 = new Branches("Sucursal Ciudad del Este", 9, "(021) 689 1000 - int 515", "Avda. San José esq. Los Rosales. Edif. Horizonte", new LatLng(-25.511925391881, -54.683353900909));
 
         mList.add(branch1);
