@@ -8,10 +8,11 @@
 
 
     <application
+        android:name=".utils.MainSession"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_tajy_banner"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_tajy_banner"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity

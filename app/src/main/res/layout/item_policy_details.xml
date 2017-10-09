@@ -6,13 +6,6 @@
     android:layout_height="wrap_content"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/branch_card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/default_padding"
-        android:padding="@dimen/default_padding"
-        app:cardCornerRadius="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,15 +13,15 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/policy_type_icon"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/default_padding"
                 android:layout_marginLeft="@dimen/default_padding"
                 android:layout_marginRight="@dimen/default_padding"
                 android:layout_marginStart="@dimen/default_padding"
-                android:contentDescription="@string/content_description" />
+                android:contentDescription="@string/content_description"
+                android:src="@mipmap/ic_fee_description"/>
 
             <View
                 android:layout_width="3dp"
@@ -49,17 +42,17 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/policy_code_text_view"
+                        android:id="@+id/policy_fee_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/default_padding"
                         android:layout_marginRight="@dimen/default_padding"
-                        android:text="@string/tag_policy_code"
+                        android:text="@string/tag_fee"
                         android:textColor="@color/primary_text"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/policy_code_value"
+                        android:id="@+id/policy_fee_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/content_description"
@@ -74,22 +67,91 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/policy_type_text_view"
+                        android:id="@+id/policy_amount_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/default_padding"
                         android:layout_marginRight="@dimen/default_padding"
-                        android:text="@string/tag_policy_type"
+                        android:text="@string/tag_policy_amount"
                         android:textColor="@color/primary_text"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/policy_type_value"
+                        android:id="@+id/policy_amount_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/content_description"
                         android:textSize="12sp"
+                        android:text="@string/content_description"
                         android:textStyle="italic" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/emition_date_policy_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@string/tag_emition_date"
+                        android:textColor="@color/primary_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/emition_date_policy_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/content_description"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/expire_date_policy_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@string/tag_expire_date"
+                        android:textColor="@color/primary_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expire_date_policy_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/content_description"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/last_payment_policy_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/default_padding"
+                        android:layout_marginRight="@dimen/default_padding"
+                        android:text="@string/tag_last_payment"
+                        android:textColor="@color/primary_text"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/last_payment_policy_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/content_description"
+                        android:textStyle="italic" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -98,17 +160,17 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/date_from_policy_text_view"
+                        android:id="@+id/balance__policy_text_view"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/default_padding"
                         android:layout_marginRight="@dimen/default_padding"
-                        android:text="@string/tag_date_from"
+                        android:text="@string/tag_balance"
                         android:textColor="@color/primary_text"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/date_from_policy_value"
+                        android:id="@+id/balance_policy_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/content_description"
@@ -116,42 +178,6 @@
 
                 </LinearLayout>
 
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/date_to_policy_text_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/default_padding"
-                        android:layout_marginRight="@dimen/default_padding"
-                        android:text="@string/tag_date_to"
-                        android:textColor="@color/primary_text"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/date_to_policy_value"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.4"
-                        android:layout_height="wrap_content"
-                        android:text="@string/content_description"
-                        android:textStyle="italic" />
-
-                    <ImageButton
-                        android:id="@+id/details_action_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.9"
-                        android:layout_gravity="center"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="@string/content_description"
-                        android:src="@mipmap/ic_details_black_24dp" />
-
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </android.support.v7.widget.CardView>
 </android.support.design.widget.CoordinatorLayout>

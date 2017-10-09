@@ -1,10 +1,14 @@
 package py.com.aseguradoratajy.tajydemo.models;
 
 
+import android.util.Log;
+import android.util.TimeFormatException;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.entities.Insurance;
 
 /**
  * Created by Manu0 on 10/7/2017.
@@ -21,7 +25,7 @@ public class MapPolicyAccount {
             }
 
             if (data.has("seccion")) {
-                insuranceObject.setSctionCode(data.getInt("seccion"));
+                insuranceObject.setSectionCode(data.getInt("seccion"));
             }
             if (data.has("poliza")) {
                 insuranceObject.setPolicy(data.getString("poliza"));
@@ -32,7 +36,7 @@ public class MapPolicyAccount {
             }
 
             if (data.has("cuota")) {
-                insuranceObject.setFeeDetails(data.getString("cuota"));
+                insuranceObject.setFeeDetail(data.getString("cuota"));
             }
 
             if (data.has("ruc")) {
@@ -40,7 +44,7 @@ public class MapPolicyAccount {
             }
 
             if (data.has("asegurado")) {
-                insuranceObject.setIssue(data.getString("asegurado"));
+                insuranceObject.setInsurance(data.getString("asegurado"));
             }
 
             if (data.has("telComercial")) {
@@ -52,7 +56,7 @@ public class MapPolicyAccount {
             }
 
             if (data.has("dirParticular")) {
-                insuranceObject.setParticularAddress(data.getString("dirParticular"));
+                insuranceObject.setParcitularAddress(data.getString("dirParticular"));
             }
 
             if (data.has("desde")) {
@@ -79,8 +83,12 @@ public class MapPolicyAccount {
                 insuranceObject.setPayment(data.getString("pagado"));
             }
 
-            if (data.has("utimoPago")) {
-                insuranceObject.setLastPayment(data.getString("pagado"));
+            if (data.has("ultimoPago")) {
+                insuranceObject.setLastPayment(data.getString("ultimoPago"));
+            }
+
+            if (data.has("saldo")) {
+                insuranceObject.setBalance(data.getString("saldo"));
             }
 
             if (data.has("sectionDescription")) {
@@ -90,6 +98,7 @@ public class MapPolicyAccount {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return insuranceObject;
     }
 

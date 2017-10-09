@@ -11,12 +11,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.entities.Products;
 import py.com.aseguradoratajy.tajydemo.fragments.BranchFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
 import py.com.aseguradoratajy.tajydemo.fragments.ReportSinisterFragment;
-import py.com.aseguradoratajy.tajydemo.models.Products;
+import py.com.aseguradoratajy.tajydemo.models.Sinisters;
 import py.com.aseguradoratajy.tajydemo.utils.AppPreferences;
 import py.com.aseguradoratajy.tajydemo.utils.ViewPagerAdapter;
 
@@ -98,12 +99,14 @@ public class NavigationActivity extends AppCompatActivity implements
     }
 
     private void checkInSession(){
-        if (AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN,true)){
-            startActivity(new Intent(NavigationActivity.this,MainActivity.class));
+        boolean isLogged = AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN, false);
+        if (isLogged) {
             finish();
-        }else {
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
             AppPreferences.getAppPreferences(this).edit().clear().apply();
         }
+
     }
 
 
@@ -130,7 +133,7 @@ public class NavigationActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onItemSinisterListenerSelected(Products products) {
+    public void onItemSinisterListenerSelected(Sinisters sinisters) {
 
     }
 }

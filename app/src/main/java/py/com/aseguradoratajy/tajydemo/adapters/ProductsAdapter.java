@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
-import py.com.aseguradoratajy.tajydemo.models.Products;
+import py.com.aseguradoratajy.tajydemo.entities.Products;
 
 /**
  * Created by Manu0 on 9/23/2017.

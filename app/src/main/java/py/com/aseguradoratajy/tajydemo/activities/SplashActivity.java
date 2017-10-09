@@ -8,6 +8,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.repositories.ProductsRepository;
+import py.com.aseguradoratajy.tajydemo.utils.SetupInitialData;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,6 +24,9 @@ public class SplashActivity extends AppCompatActivity {
 
 
         splashTimer = new Timer();
+        if(ProductsRepository.getDao().count() == 0){
+            SetupInitialData.insertData();
+        }
         splashTimer.schedule(new TimerTask()
         {
             @Override

@@ -13,11 +13,29 @@ public class MyDaoGenerator {
         products.addIdProperty();
         products.addIntProperty("productId");
         products.addStringProperty("productDescription");
+        products.addStringProperty("productDetails");
 
-        Entity services = schema.addEntity("Services");
-        services.addIdProperty();
-        services.addIntProperty("serviceId");
-        services.addStringProperty("serviceDescription");
+        Entity insurance = schema.addEntity("Insurance");
+        insurance.addIdProperty();
+        insurance.addStringProperty("identifyCard");
+        insurance.addIntProperty("sectionCode");
+        insurance.addStringProperty("sectionDescription");
+        insurance.addStringProperty("policy");
+        insurance.addStringProperty("endorsement");
+        insurance.addStringProperty("feeDetail");
+        insurance.addStringProperty("ruc");
+        insurance.addStringProperty("insurance");
+        insurance.addStringProperty("comercialPhone");
+        insurance.addStringProperty("comercialAddress");
+        insurance.addStringProperty("parcitularAddress");
+        insurance.addStringProperty("dateFrom");
+        insurance.addStringProperty("dateTo");
+        insurance.addStringProperty("issue");
+        insurance.addStringProperty("expiration");
+        insurance.addStringProperty("amount");
+        insurance.addStringProperty("payment");
+        insurance.addStringProperty("balance");
+        insurance.addStringProperty("lastPayment");
 
 
         new DaoGenerator().generateAll(schema, "../app/src/main/java");

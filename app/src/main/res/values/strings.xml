@@ -11,6 +11,8 @@
     <string name="error_parsing_json">Error al convertir respuesta</string>
     <string name="error_invalid_response">Error, respuesta invalída</string>
     <string name="tag_not_internet">La aplicación necesita internet, favor actívela</string>
+    <string name="policy_details">Ver Detalles</string>
+    <string name="tajy_details">Aseguradora Tajy - Propiedad Cooperativa S.A</string>
 
 
     <string name="prompt_document">Documento</string>
@@ -21,21 +23,37 @@
     <string name="prompt_process_title">Procesando</string>
     <string name="prompt_process_message">Por favor espere un momento...</string>
     <string name="prompt_close">Cerrar</string>
+    <string name="label_accept">Aceptar</string>
     <string name="prompt_branch">Sucursal</string>
     <string name="prompt_phone">Teléfono</string>
     <string name="prompt_address">Dirección</string>
+    <string name="tag_user">Usuario: </string>
     <string name="prompt_mark">Marca</string>
     <string name="prompt_model">Modelo</string>
     <string name="prompt_insurance_amount">Suma Asegurada</string>
     <string name="prompt_vencimiento">Vencimiento</string>
-    
+    <string name="error_get_object_position">Error al obtener objeto</string>
+    <string name="policy_details_is_empty">Polizas sin detalles para mostrar</string>
+
     <!-- Policy item-->
+    <string name="tag_policies">Polizas</string>
     <string name="tag_policy_type">Tipo: </string>
     <string name="tag_policy_amount">Monto: </string>
     <string name="tag_policy_code">Número de póliza: </string>
     <string name="tag_fee">Cuota: </string>
     <string name="tag_date_from">Desde: </string>
     <string name="tag_date_to">Hasta: </string>
+    <string name="tag_expire_date">Vencimiento: </string>
+    <string name="tag_emition_date">Emisión: </string>
+    <string name="tag_balance">Saldo: </string>
+    <string name="tag_last_payment">Último pago: </string>
+    <string name="tag_options">Opciones</string>
+    <string name="label_selected_options">Selecciona una opción</string>
+    <array name="policy_options">
+        <item>Detalle de polizas</item>
+        <item>Detalle de Cuentas</item>
+    </array>
+    <string name="label_account_details">Detalles de Cuenta</string>
 
     <string name="error_empty_field">Debes completar el campo.</string>
     <string name="error_login">Usuario o clave incorrectos.</string>

@@ -1,7 +1,9 @@
 package py.com.aseguradoratajy.tajydemo.activities;
 
-import android.app.NotificationManager;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -16,9 +18,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,11 +37,15 @@ import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.adapters.InsuranceAdapter;
-import py.com.aseguradoratajy.tajydemo.models.Insurance;
+import py.com.aseguradoratajy.tajydemo.adapters.InsuranceDetailsAdapter;
+import py.com.aseguradoratajy.tajydemo.dialogs.ProgressDialogFragment;
+import py.com.aseguradoratajy.tajydemo.entities.Insurance;
 import py.com.aseguradoratajy.tajydemo.models.MapPolicyAccount;
 import py.com.aseguradoratajy.tajydemo.network.NetworkQueue;
+import py.com.aseguradoratajy.tajydemo.repositories.InsuranceRepository;
 import py.com.aseguradoratajy.tajydemo.utils.AppPreferences;
 import py.com.aseguradoratajy.tajydemo.utils.JsonObjectRequest;
+import py.com.aseguradoratajy.tajydemo.utils.RecyclerItemClickListener;
 import py.com.aseguradoratajy.tajydemo.utils.URLS;
 import py.com.aseguradoratajy.tajydemo.utils.Utiles;
 
@@ -50,12 +57,13 @@ public class MainActivity extends AppCompatActivity
     private CoordinatorLayout mCoordinatorLayoutView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private InsuranceAdapter mAdapter;
+    private ProgressDialogFragment progressDialogFragment;
 
     // Request
     private RequestQueue mRequestQueue = null;
 
     // UTILITARIAN VARIABLE
-    private List<Insurance> mInsuranceList = new ArrayList<>();
+    private boolean isData = false;
 
 
     @Override
@@ -67,14 +75,15 @@ public class MainActivity extends AppCompatActivity
         navigationDrawerView();
         mCoordinatorLayoutView = (CoordinatorLayout) findViewById(R.id.main_coordinator_layout);
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        progressDialogFragment = ProgressDialogFragment.newInstance(this);
 
         RecyclerView mInsuranceRecyclerView = (RecyclerView) findViewById(R.id.insurance_list);
         mInsuranceRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mInsuranceRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
         mInsuranceRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mInsuranceRecyclerView.setHasFixedSize(true);
-        mAdapter = new InsuranceAdapter(getApplicationContext(), new ArrayList<Insurance>());
+        mAdapter = new InsuranceAdapter(this, new ArrayList<Insurance>());
         mInsuranceRecyclerView.setAdapter(mAdapter);
+        checkInitialData();
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -87,6 +96,17 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    private void checkInitialData() {
+        long countRegisters = InsuranceRepository.getDao().count();
+        if (countRegisters == 0) {
+            progressDialogFragment.show(getSupportFragmentManager(), ProgressDialogFragment.TAG);
+            sendRequest();
+        } else {
+            isData = true;
+            mAdapter.setData(InsuranceRepository.groupData());
+        }
+    }
+
     private void navigationDrawerView() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -95,6 +115,10 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        TextView mUserName = (TextView) headerView.findViewById(R.id.username_text_view);
+        mUserName.setText("USUARIO: " + AppPreferences.getAppPreferences(this).getString(AppPreferences.KEY_USERNAME, null));
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -109,27 +133,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -140,7 +144,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_account) {
             // Handle the camera action
         } else if (id == R.id.nav_close_session) {
-
+            startActivity(new Intent(MainActivity.this, NavigationActivity.class));
+            AppPreferences.getAppPreferences(this).edit().clear().apply();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -151,14 +156,13 @@ public class MainActivity extends AppCompatActivity
 
     private void sendRequest() {
 
-        String REQUEST_TAG = "SEND_REQUEST_ALL_DATA";
-        boolean mIsConnected;
 
-        mIsConnected = Utiles.checkNetworkConnection(this);
-        if (!mIsConnected) {
+        String REQUEST_TAG = "SEND_REQUEST_ALL_DATA";
+        if (!Utiles.checkNetworkConnection(this)) {
             Utiles.getToast(this, getString(R.string.tag_not_internet));
             return;
         }
+        mAdapter.setData(new ArrayList<Insurance>());
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(REQUEST_TAG);
         }
@@ -169,6 +173,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        if (!isData) progressDialogFragment.dismiss();
                         mSwipeRefreshLayout.setRefreshing(false);
                         responseHandler(response);
                     }
@@ -176,6 +181,7 @@ public class MainActivity extends AppCompatActivity
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        if (!isData) progressDialogFragment.dismiss();
                         mSwipeRefreshLayout.setRefreshing(false);
                         String message = NetworkQueue.handleError(error, MainActivity.this);
                         Utiles.getToast(MainActivity.this, message);
@@ -223,13 +229,15 @@ public class MainActivity extends AppCompatActivity
                     if (mInsuranceJsonArray.length() > 0) {
                         AsyncTaskInsurace asyncTaskInsurace = new AsyncTaskInsurace(new AsyncTaskInsurace.AsyncResponse() {
                             @Override
-                            public void processFinish(List<Insurance> insuranceList) {
-                                if (insuranceList.size() == 0) {
+                            public void processFinish(Integer countReqister) {
+                                if (countReqister == 0) {
                                     Utiles.getToast(MainActivity.this, getString(R.string.error_empty_insurance_policy));
                                     mSwipeRefreshLayout.setRefreshing(false);
+                                    if (!isData) progressDialogFragment.dismiss();
                                 } else {
+                                    if (!isData) progressDialogFragment.dismiss();
                                     mSwipeRefreshLayout.setRefreshing(false);
-                                    mAdapter.setData(insuranceList);
+                                    mAdapter.setData(InsuranceRepository.groupData());
                                 }
                             }
                         }, mInsuranceJsonArray);
@@ -248,17 +256,16 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private static class AsyncTaskInsurace extends AsyncTask<Void, Void, List<Insurance>> {
+    private static class AsyncTaskInsurace extends AsyncTask<Void, Void, Integer> {
         // AsyncTask implement for insert much simcard details
         // you may separate this or combined to caller class.
         interface AsyncResponse {
-            void processFinish(List<Insurance> insurances);
+            void processFinish(Integer insuranceCount);
         }
 
         AsyncResponse delegate = null;
 
         private JSONArray mInsuranceArray = new JSONArray();
-        private List<Insurance> mInsuranceList = new ArrayList<>();
 
 
         AsyncTaskInsurace(AsyncResponse delegate, JSONArray insuranceArray) {
@@ -269,30 +276,30 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected void onPreExecute() {
-            super.onPreExecute();
+            InsuranceRepository.clearAll();
         }
 
         @Override
-        protected List<Insurance> doInBackground(Void... params) {
+        protected Integer doInBackground(Void... params) {
+            int count = 0;
             for (int i = 0; i < mInsuranceArray.length(); i++) {
                 try {
+                    count++;
                     JSONObject jsonObject = (JSONObject) mInsuranceArray.get(i);
                     Insurance insuranceObject = MapPolicyAccount.getInsuranceFromJson(jsonObject);
-                    mInsuranceList.add(insuranceObject);
+                    InsuranceRepository.getDao().insertOrReplace(insuranceObject);
                 } catch (JSONException jsx) {
                     jsx.printStackTrace();
                 }
             }
 
-            return mInsuranceList;
+            return count;
         }
 
         @Override
-        protected void onPostExecute(List<Insurance> insurance) {
-            delegate.processFinish(insurance);
+        protected void onPostExecute(Integer count) {
+            delegate.processFinish(count);
         }
 
     }
-
-
 }

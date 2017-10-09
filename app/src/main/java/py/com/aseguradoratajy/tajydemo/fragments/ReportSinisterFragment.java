@@ -14,9 +14,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import py.com.aseguradoratajy.tajydemo.R;
-import py.com.aseguradoratajy.tajydemo.adapters.ProductsAdapter;
 import py.com.aseguradoratajy.tajydemo.adapters.SinisterAdapter;
-import py.com.aseguradoratajy.tajydemo.models.Products;
+import py.com.aseguradoratajy.tajydemo.entities.Products;
 import py.com.aseguradoratajy.tajydemo.models.Sinisters;
 
 /**
@@ -115,6 +114,6 @@ public class ReportSinisterFragment extends Fragment {
      */
     public interface OnItemSinisterListenerSelected {
         // TODO: Update argument type and name
-        void onItemSinisterListenerSelected(Products products);
+        void onItemSinisterListenerSelected(Sinisters sinisters);
     }
 }
