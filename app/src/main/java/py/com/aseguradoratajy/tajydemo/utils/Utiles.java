@@ -27,6 +27,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.repositories.InsuranceRepository;
 
 /**
  * Created by Diego on 9/23/2017.
@@ -131,6 +132,11 @@ public class Utiles {
             e.printStackTrace();
         }
         return isConnected;
+    }
+
+    public static void clearAppData(Context context){
+        InsuranceRepository.clearAll();
+        AppPreferences.getAppPreferences(context).edit().clear().apply();
     }
 
 }

@@ -16,14 +16,13 @@ import py.com.aseguradoratajy.tajydemo.fragments.BranchFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ContactSupportFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.LoginAccountFragment;
 import py.com.aseguradoratajy.tajydemo.fragments.ProductsFragments;
-import py.com.aseguradoratajy.tajydemo.fragments.ReportSinisterFragment;
+import py.com.aseguradoratajy.tajydemo.fragments.QuotientFragment;
 import py.com.aseguradoratajy.tajydemo.models.Sinisters;
 import py.com.aseguradoratajy.tajydemo.utils.AppPreferences;
 import py.com.aseguradoratajy.tajydemo.utils.ViewPagerAdapter;
 
 public class NavigationActivity extends AppCompatActivity implements
         ProductsFragments.OnItemProductsListenerSelected,
-        ReportSinisterFragment.OnItemSinisterListenerSelected,
         ContactSupportFragment.OnItemContactSupportListenerSelected {
 
     private Toolbar toolbar;
@@ -62,7 +61,7 @@ public class NavigationActivity extends AppCompatActivity implements
                             case R.id.action_contact:
                                 mViewPager.setCurrentItem(3);
                                 break;
-                            case R.id.action_report_sinister:
+                            case R.id.action_quotien:
                                 mViewPager.setCurrentItem(4);
                                 break;
                         }
@@ -98,7 +97,7 @@ public class NavigationActivity extends AppCompatActivity implements
 
     }
 
-    private void checkInSession(){
+    private void checkInSession() {
         boolean isLogged = AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN, false);
         if (isLogged) {
             finish();
@@ -116,7 +115,7 @@ public class NavigationActivity extends AppCompatActivity implements
         adapter.addFrag(ProductsFragments.newInstance());
         adapter.addFrag(BranchFragment.newInstance());
         adapter.addFrag(ContactSupportFragment.newInstance());
-        adapter.addFrag(ReportSinisterFragment.newInstance());
+        adapter.addFrag(QuotientFragment.newInstance());
         viewPager.setAdapter(adapter);
     }
 
@@ -132,8 +131,4 @@ public class NavigationActivity extends AppCompatActivity implements
 
     }
 
-    @Override
-    public void onItemSinisterListenerSelected(Sinisters sinisters) {
-
-    }
 }

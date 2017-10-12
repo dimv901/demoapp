@@ -25,7 +25,7 @@ public class Sinisters {
         Sinisters sinisters1 = new Sinisters(1, "Policía","911");
         Sinisters sinister2 = new Sinisters(2, "Incendio","932");
         Sinisters sinisters3 = new Sinisters(3, "Ambulancia","111");
-        Sinisters sinisters4 = new Sinisters(4, "Call Center","0981222822");
+        Sinisters sinisters4 = new Sinisters(4, "Call Center","0216891000");
 
         sinistersList.add(sinisters1);
         sinistersList.add(sinister2);

@@ -16,16 +16,7 @@
         android:title="@string/tab_products"
         app:showAsAction="ifRoom" />
 
-    <!--
-    <item
-        android:id="@+id/action_services"
-        android:checked="false"
-        android:icon="@mipmap/ic_chrome_reader_mode_black_36dp"
-        android:title="@string/tab_services"
-        app:showAsAction="ifRoom" />
-
--->
-    <item
+       <item
         android:id="@+id/action_branches"
         android:checked="false"
         android:icon="@mipmap/ic_place_black_36dp"
@@ -33,16 +24,17 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_contact"
-        android:checked="false"
-        android:icon="@mipmap/ic_email_black_36dp"
-        android:title="@string/tab_contact_mail"
-        app:showAsAction="ifRoom" />
+    android:id="@+id/action_contact"
+    android:checked="false"
+    android:icon="@mipmap/ic_email_black_36dp"
+    android:title="@string/tab_contact_mail"
+    app:showAsAction="ifRoom" />
+
     <item
-        android:id="@+id/action_report_sinister"
+        android:id="@+id/action_quotien"
         android:checked="false"
-        android:icon="@mipmap/ic_whatshot_black_36dp"
-        android:title="@string/tab_report_sinister"
+        android:icon="@mipmap/ic_directions_car_black_36dp"
+        android:title="@string/label_quotiten_vehicle"
         app:showAsAction="ifRoom" />
 
 </menu>

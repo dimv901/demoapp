@@ -3,20 +3,38 @@ package py.com.aseguradoratajy.tajydemo.fragments;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.GridView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.adapters.SinisterAdapter;
 import py.com.aseguradoratajy.tajydemo.dialogs.AlertDialogFragment;
 import py.com.aseguradoratajy.tajydemo.dialogs.ProgressDialogFragment;
+import py.com.aseguradoratajy.tajydemo.models.Sinisters;
 
 /**
  * Created by Manu0 on 9/23/2017.
@@ -33,6 +51,7 @@ public class ContactSupportFragment extends Fragment {
     private AppCompatEditText mIssuesEditText;
     private AppCompatEditText mMessageEditText;
     private FloatingActionButton mSendFabButton;
+    private AppCompatButton mSinisterButton;
 
 
     public ContactSupportFragment() {
@@ -67,10 +86,17 @@ public class ContactSupportFragment extends Fragment {
         mIssuesEditText = (AppCompatEditText) rootView.findViewById(R.id.issues_edit_text);
         mMessageEditText = (AppCompatEditText) rootView.findViewById(R.id.message_edit_text);
         mSendFabButton = (FloatingActionButton) rootView.findViewById(R.id.send_fab_button);
+        mSinisterButton = (AppCompatButton) rootView.findViewById(R.id.call_emergency_button);
         mSendFabButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validateFields();
+            }
+        });
+        mSinisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSinisterDialog();
             }
         });
         return rootView;
@@ -91,6 +117,52 @@ public class ContactSupportFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+
+    private void showSinisterDialog() {
+        GridView gridView;
+        View rootView;
+        final TextView mCallTextView;
+        FloatingActionButton mFloatingCallButton;
+        final SinisterAdapter mGridSinisterAdapter;
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        rootView = inflater.inflate(R.layout.report_sinister_dialog, null);
+        gridView = (GridView) rootView.findViewById(R.id.sinisterGridView);
+        mCallTextView = (TextView) rootView.findViewById(R.id.number_call);
+        mFloatingCallButton = (FloatingActionButton) rootView.findViewById(R.id.call_fab_button);
+        mGridSinisterAdapter = new SinisterAdapter(getContext(), R.layout.item_sinister, Sinisters.setupSinisterList());
+        gridView.setAdapter(mGridSinisterAdapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mCallTextView.setText(mGridSinisterAdapter.getItemAtPosition(position).getNumberPhone());
+            }
+        });
+
+        mFloatingCallButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:" + mCallTextView.getText().toString().trim()));
+                startActivity(callIntent);
+
+            }
+        });
+        builder.setPositiveButton(getString(R.string.label_accept), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+
+        builder.setView(rootView);
+        builder.create();
+        builder.setCancelable(false);
+        builder.show();
+
     }
 
     private void validateFields() {
@@ -146,12 +218,21 @@ public class ContactSupportFragment extends Fragment {
         if (cancel) {
             focusView.requestFocus();
         } else {
+            clearFields();
             TaskContactSupport taskContactSupport = new TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
             taskContactSupport.execute();
         }
 
     }
 
+
+    private void clearFields() {
+        mNameAndLastNameEditText.getText().clear();
+        mPhoneEditText.getText().clear();
+        mEmailEditText.getText().clear();
+        mIssuesEditText.getText().clear();
+        mMessageEditText.getText().clear();
+    }
 
     public interface OnItemContactSupportListenerSelected {
         // TODO: Update argument type and name

@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity
 
 
     private void checkInitialData() {
+
+
         long countRegisters = InsuranceRepository.getDao().count();
         if (countRegisters == 0) {
             progressDialogFragment.show(getSupportFragmentManager(), ProgressDialogFragment.TAG);
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity
             isData = true;
             mAdapter.setData(InsuranceRepository.groupData());
         }
+
+
     }
 
     private void navigationDrawerView() {
@@ -134,7 +138,6 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -146,8 +149,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_close_session) {
             finish();
             startActivity(new Intent(MainActivity.this, NavigationActivity.class));
-            InsuranceRepository.clearAll();
-            AppPreferences.getAppPreferences(this).edit().clear().apply();
+            Utiles.clearAppData(this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -261,6 +263,7 @@ public class MainActivity extends AppCompatActivity
     private static class AsyncTaskInsurace extends AsyncTask<Void, Void, Integer> {
         // AsyncTask implement for insert much simcard details
         // you may separate this or combined to caller class.
+
         interface AsyncResponse {
             void processFinish(Integer insuranceCount);
         }

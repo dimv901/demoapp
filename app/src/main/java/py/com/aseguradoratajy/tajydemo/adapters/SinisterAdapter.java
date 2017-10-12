@@ -66,12 +66,12 @@ public class SinisterAdapter extends ArrayAdapter {
                 icon = R.mipmap.ic_fire_man;
                 break;
             case 3:
-                // call center
-                icon = R.mipmap.ic_call_support;
-                break;
-            case 4:
                 // Ambulacia
                 icon = R.mipmap.ic_medical;
+                break;
+            case 4:
+                // call center
+                icon = R.mipmap.ic_call_support;
                 break;
         }
 
