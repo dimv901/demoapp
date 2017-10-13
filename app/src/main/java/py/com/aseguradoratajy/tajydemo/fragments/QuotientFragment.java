@@ -16,6 +16,7 @@ import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.adapters.VehiclesBardAdapter;
 import py.com.aseguradoratajy.tajydemo.adapters.VehiclesModelAdapter;
 import py.com.aseguradoratajy.tajydemo.models.VehicleBrand;
+import py.com.aseguradoratajy.tajydemo.models.VehiclesModels;
 
 /**
  * Created by mavalos on 11/10/17.
@@ -75,10 +76,10 @@ public class QuotientFragment extends Fragment {
 
     private void setDataSpinners() {
 
-        mVehiclesBardAdapter = new VehiclesBardAdapter(this, R.layout.item_spinner_description, SubTypeCommerceRepository.getAll());
+        mVehiclesBardAdapter = new VehiclesBardAdapter(getContext(), R.layout.item_spinner_description, VehicleBrand.getVehiclesBrandList());
         mVehiclesBrandSpinner.setAdapter(mVehiclesBardAdapter);
 
-        mVehiclesModelAdapter = new VehiclesModelAdapter(this, R.layout.item_spinner_description, SubTypeCommerceRepository.getAll());
+        mVehiclesModelAdapter = new VehiclesModelAdapter(getContext(), R.layout.item_spinner_description, VehiclesModels.getVehiclesList());
         mVehiclesBrandSpinner.setAdapter(mVehiclesModelAdapter);
 
 
@@ -113,7 +114,6 @@ public class QuotientFragment extends Fragment {
         }
 
 
-
         if (TextUtils.isEmpty(mEmail)) {
             mEmailEditText.setError(getString(R.string.error_empty_field));
             focusView = mEmailEditText;
@@ -133,8 +133,8 @@ public class QuotientFragment extends Fragment {
             focusView.requestFocus();
         } else {
             clearFields();
-            TaskContactSupport taskContactSupport = new ContactSupportFragment.TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
-            taskContactSupport.execute();
+            /*TaskContactSupport taskContactSupport = new TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
+            taskContactSupport.execute();*/
         }
 
     }

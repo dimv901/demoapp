@@ -1,28 +1,31 @@
 package py.com.aseguradoratajy.tajydemo.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by mavalos on 11/10/17.
  */
 
 public class VehiclesModels {
 
-    private String modelId;
+    private Integer modelId;
     private String description;
 
-    public VehiclesModels(){
+    public VehiclesModels() {
 
     }
 
-    public VehiclesModels(String modelId, String description) {
+    public VehiclesModels(Integer modelId, String description) {
         this.modelId = modelId;
         this.description = description;
     }
 
-    public String getModelId() {
+    public Integer getModelId() {
         return modelId;
     }
 
-    public void setModelId(String modelId) {
+    public void setModelId(Integer modelId) {
         this.modelId = modelId;
     }
 
@@ -32,6 +35,14 @@ public class VehiclesModels {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    public static List<VehiclesModels> getVehiclesList() {
+        List<VehiclesModels> vehiclesModeList = new ArrayList<>();
+        VehiclesModels vehiclesModels1 = new VehiclesModels(1,"prueba modelo");
+        vehiclesModeList.add(vehiclesModels1);
+        return vehiclesModeList;
     }
 
 
