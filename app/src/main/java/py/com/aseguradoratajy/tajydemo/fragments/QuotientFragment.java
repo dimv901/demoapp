@@ -18,6 +18,8 @@ import py.com.aseguradoratajy.tajydemo.adapters.VehiclesModelAdapter;
 import py.com.aseguradoratajy.tajydemo.entities.Marks;
 import py.com.aseguradoratajy.tajydemo.repositories.MarksRepositories;
 import py.com.aseguradoratajy.tajydemo.repositories.VehiclesModelRepository;
+import py.com.aseguradoratajy.tajydemo.models.VehicleBrand;
+import py.com.aseguradoratajy.tajydemo.models.VehiclesModels;
 
 /**
  * Created by mavalos on 11/10/17.
@@ -97,7 +99,6 @@ public class QuotientFragment extends Fragment {
         mVehiclesBraddAdapter = new VehiclesBraddAdapter(getContext(), R.layout.item_spinner_description, MarksRepositories.getAllMarks());
         mVehiclesBrandSpinner.setAdapter(mVehiclesBraddAdapter);
 
-
     }
 
     private void validateFields() {
@@ -149,6 +150,7 @@ public class QuotientFragment extends Fragment {
         } else {
             clearFields();
            /* TaskContactSupport taskContactSupport = new ContactSupportFragment.TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
+            /*TaskContactSupport taskContactSupport = new TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
             taskContactSupport.execute();*/
         }
 
