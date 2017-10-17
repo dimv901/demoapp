@@ -38,6 +38,20 @@ public class MyDaoGenerator {
         insurance.addStringProperty("lastPayment");
 
 
+        Entity marks = schema.addEntity("Marks");
+        marks.addIdProperty();
+        marks.addIntProperty("brandCode");
+        marks.addStringProperty("description");
+
+        Entity vehiclesModel = schema.addEntity("VehiclesModel");
+        vehiclesModel.addIdProperty();
+        vehiclesModel.addIntProperty("modelCode");
+        vehiclesModel.addStringProperty("description");
+        vehiclesModel.addIntProperty("brandId");
+
+
+
+
         new DaoGenerator().generateAll(schema, "../app/src/main/java");
 
     }

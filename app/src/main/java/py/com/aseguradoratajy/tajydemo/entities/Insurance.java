@@ -233,29 +233,4 @@ public class Insurance {
     // KEEP METHODS - put your custom methods here
     // KEEP METHODS END
 
-    @Override
-    public String toString() {
-        return "Insurance{" +
-                "id=" + id +
-                ", identifyCard='" + identifyCard + '\'' +
-                ", sectionCode=" + sectionCode +
-                ", sectionDescription='" + sectionDescription + '\'' +
-                ", policy='" + policy + '\'' +
-                ", endorsement='" + endorsement + '\'' +
-                ", feeDetail='" + feeDetail + '\'' +
-                ", ruc='" + ruc + '\'' +
-                ", insurance='" + insurance + '\'' +
-                ", comercialPhone='" + comercialPhone + '\'' +
-                ", comercialAddress='" + comercialAddress + '\'' +
-                ", parcitularAddress='" + parcitularAddress + '\'' +
-                ", dateFrom='" + dateFrom + '\'' +
-                ", dateTo='" + dateTo + '\'' +
-                ", issue='" + issue + '\'' +
-                ", expiration='" + expiration + '\'' +
-                ", amount='" + amount + '\'' +
-                ", payment='" + payment + '\'' +
-                ", balance='" + balance + '\'' +
-                ", lastPayment='" + lastPayment + '\'' +
-                '}';
-    }
 }

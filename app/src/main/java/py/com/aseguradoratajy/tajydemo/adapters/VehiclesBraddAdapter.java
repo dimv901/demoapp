@@ -13,39 +13,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
-import py.com.aseguradoratajy.tajydemo.models.VehicleBrand;
+import py.com.aseguradoratajy.tajydemo.entities.Marks;
 
 /**
  * Created by Manu0 on 10/12/2017.
  */
 
-public class VehiclesBardAdapter extends ArrayAdapter<VehicleBrand> {
+public class VehiclesBraddAdapter extends ArrayAdapter<Marks> {
 
-    private List<VehicleBrand> mVehicleasBardList = new ArrayList<>();
+    private List<Marks> mMarksItem = new ArrayList<>();
     private Context mContext;
     private int layoutResource;
 
-    public VehiclesBardAdapter(Context context, int resource, List<VehicleBrand> data) {
+    public VehiclesBraddAdapter(Context context, int resource, List<Marks> data) {
         super(context, resource);
-        mVehicleasBardList = data;
+        mMarksItem = data;
         mContext = context;
         layoutResource = resource;
     }
 
     @Nullable
     @Override
-    public VehicleBrand getItem(int position) {
-        return mVehicleasBardList.get(position);
+    public Marks getItem(int position) {
+        return mMarksItem.get(position);
     }
 
     @Override
-    public int getPosition(VehicleBrand item) {
-        return mVehicleasBardList.indexOf(item);
+    public int getPosition(Marks item) {
+        return mMarksItem.indexOf(item);
     }
 
     @Override
     public int getCount() {
-        return mVehicleasBardList.size();
+        return mMarksItem.size();
     }
 
     @Override
@@ -57,7 +57,7 @@ public class VehiclesBardAdapter extends ArrayAdapter<VehicleBrand> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        VehiclesBardAdapter.ViewHolder viewHolder = new VehiclesBardAdapter.ViewHolder();
+        VehiclesBraddAdapter.ViewHolder viewHolder = new VehiclesBraddAdapter.ViewHolder();
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(layoutResource, parent, false);
             // Configure the view holder
@@ -65,10 +65,10 @@ public class VehiclesBardAdapter extends ArrayAdapter<VehicleBrand> {
             convertView.setTag(viewHolder);
         } else {
             // Fill data from the recycled view holder
-            viewHolder = (VehiclesBardAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (VehiclesBraddAdapter.ViewHolder) convertView.getTag();
         }
-        VehicleBrand vehicleBrand = mVehicleasBardList.get(position);
-        viewHolder.mCommerceTypeDescription.setText(vehicleBrand.getDescription().toUpperCase());
+        Marks marks = mMarksItem.get(position);
+        viewHolder.mCommerceTypeDescription.setText(marks.getDescription().toUpperCase());
         return convertView;
     }
 

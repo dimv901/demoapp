@@ -13,20 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import py.com.aseguradoratajy.tajydemo.R;
-import py.com.aseguradoratajy.tajydemo.models.VehicleBrand;
-import py.com.aseguradoratajy.tajydemo.models.VehiclesModels;
+import py.com.aseguradoratajy.tajydemo.entities.VehiclesModel;
 
 /**
  * Created by Manu0 on 10/12/2017.
  */
 
-public class VehiclesModelAdapter extends ArrayAdapter<VehiclesModels> {
+public class VehiclesModelAdapter extends ArrayAdapter<VehiclesModel> {
 
-    private List<VehiclesModels> mVehicleasModelList = new ArrayList<>();
+    private List<VehiclesModel> mVehicleasModelList = new ArrayList<>();
     private Context mContext;
     private int layoutResource;
 
-    public VehiclesModelAdapter(Context context, int resource, List<VehiclesModels> data) {
+    public VehiclesModelAdapter(Context context, int resource, List<VehiclesModel> data) {
         super(context, resource);
         mVehicleasModelList = data;
         mContext = context;
@@ -35,7 +34,7 @@ public class VehiclesModelAdapter extends ArrayAdapter<VehiclesModels> {
 
     @Nullable
     @Override
-    public VehiclesModels getItem(int position) {
+    public VehiclesModel getItem(int position) {
         return mVehicleasModelList.get(position);
     }
 
@@ -64,7 +63,7 @@ public class VehiclesModelAdapter extends ArrayAdapter<VehiclesModels> {
             // Fill data from the recycled view holder
             viewHolder = (VehiclesModelAdapter.ViewHolder) convertView.getTag();
         }
-        VehiclesModels vehiclesModels = mVehicleasModelList.get(position);
+        VehiclesModel vehiclesModels = mVehicleasModelList.get(position);
         viewHolder.mCommerceTypeDescription.setText(vehiclesModels.getDescription().toUpperCase());
         return convertView;
     }

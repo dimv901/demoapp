@@ -14,6 +14,7 @@ public class AppPreferences {
     public static final String KEY_LOGGED_IN = "KEY_LOGGED_IN";
     public static final String KEY_USERNAME = "KEY_USERNAME";
     public static final String KEY_PASSWORD = "KEY_PASSWORD";
+    public static final String KEY_CREATE_DB = "KEY_CREATE_DB";
 
     public static SharedPreferences getAppPreferences(Context context) {
         if (appPreferences == null) {

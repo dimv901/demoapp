@@ -4,18 +4,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import py.com.aseguradoratajy.tajydemo.R;
-import py.com.aseguradoratajy.tajydemo.adapters.VehiclesBardAdapter;
+import py.com.aseguradoratajy.tajydemo.adapters.VehiclesBraddAdapter;
 import py.com.aseguradoratajy.tajydemo.adapters.VehiclesModelAdapter;
-import py.com.aseguradoratajy.tajydemo.models.VehicleBrand;
+import py.com.aseguradoratajy.tajydemo.entities.Marks;
+import py.com.aseguradoratajy.tajydemo.repositories.MarksRepositories;
+import py.com.aseguradoratajy.tajydemo.repositories.VehiclesModelRepository;
 
 /**
  * Created by mavalos on 11/10/17.
@@ -31,7 +33,7 @@ public class QuotientFragment extends Fragment {
     private AppCompatSpinner mVehiclesBrandSpinner;
     private AppCompatSpinner mVehiclesModelSpinner;
     private AppCompatEditText mYearEditText;
-    private VehiclesBardAdapter mVehiclesBardAdapter;
+    private VehiclesBraddAdapter mVehiclesBraddAdapter;
     private VehiclesModelAdapter mVehiclesModelAdapter;
     private FloatingActionButton mSendButton;
 
@@ -68,18 +70,32 @@ public class QuotientFragment extends Fragment {
         mVehiclesBrandSpinner = (AppCompatSpinner) rootView.findViewById(R.id.vehicle_brand_spinner);
         mVehiclesModelSpinner = (AppCompatSpinner) rootView.findViewById(R.id.model_car_spinner);
         mSendButton = (FloatingActionButton) rootView.findViewById(R.id.send_fab_button);
-
+        setDataSpinners();
+        setupSpinnerListeners();
         return rootView;
+    }
+
+    private void setupSpinnerListeners() {
+        mVehiclesBrandSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Marks marks = (Marks) mVehiclesBrandSpinner.getSelectedItem();
+                mVehiclesModelAdapter = new VehiclesModelAdapter(getContext(), R.layout.item_spinner_description, VehiclesModelRepository.getModelsByMarks(marks.getId().intValue()));
+                mVehiclesModelSpinner.setAdapter(mVehiclesModelAdapter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
 
     private void setDataSpinners() {
 
-        mVehiclesBardAdapter = new VehiclesBardAdapter(this, R.layout.item_spinner_description, SubTypeCommerceRepository.getAll());
-        mVehiclesBrandSpinner.setAdapter(mVehiclesBardAdapter);
-
-        mVehiclesModelAdapter = new VehiclesModelAdapter(this, R.layout.item_spinner_description, SubTypeCommerceRepository.getAll());
-        mVehiclesBrandSpinner.setAdapter(mVehiclesModelAdapter);
+        mVehiclesBraddAdapter = new VehiclesBraddAdapter(getContext(), R.layout.item_spinner_description, MarksRepositories.getAllMarks());
+        mVehiclesBrandSpinner.setAdapter(mVehiclesBraddAdapter);
 
 
     }
@@ -113,7 +129,6 @@ public class QuotientFragment extends Fragment {
         }
 
 
-
         if (TextUtils.isEmpty(mEmail)) {
             mEmailEditText.setError(getString(R.string.error_empty_field));
             focusView = mEmailEditText;
@@ -133,8 +148,8 @@ public class QuotientFragment extends Fragment {
             focusView.requestFocus();
         } else {
             clearFields();
-            TaskContactSupport taskContactSupport = new ContactSupportFragment.TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
-            taskContactSupport.execute();
+           /* TaskContactSupport taskContactSupport = new ContactSupportFragment.TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
+            taskContactSupport.execute();*/
         }
 
     }
