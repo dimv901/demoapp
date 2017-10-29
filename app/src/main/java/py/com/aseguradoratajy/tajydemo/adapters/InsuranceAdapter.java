@@ -148,22 +148,26 @@ public class InsuranceAdapter extends RecyclerView.Adapter<InsuranceAdapter.Insu
 
 
     private void accountPolicyDetails(Insurance insurance) {
-        StringBuilder stringBuilder = new StringBuilder();
+        //StringBuilder stringBuilder = new StringBuilder();
         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle(mContext.getString(R.string.tagl_account_data));
-        builder.setIcon(R.mipmap.ic_face_black_36dp);
-        stringBuilder.append("Cédula: ").append(insurance.getIdentifyCard()).append("\n")
-                .append("Ruc: ").append(insurance.getRuc()).append("\n")
-                .append("Último Pago: ").append(insurance.getLastPayment()).append("\n")
-                .append("Dirección Particular: ").append(insurance.getParcitularAddress()).append("\n")
-                .append("Teléfono Comercial: ").append(insurance.getComercialPhone().toUpperCase()).append("\n");
-        builder.setMessage(stringBuilder.toString());
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View dialogView = layoutInflater.inflate(R.layout.account_details_dialog, null);
+        TextView mCiAccountTextView = (TextView) dialogView.findViewById(R.id.ci_account_value);
+        TextView mRucAccountTextView = (TextView) dialogView.findViewById(R.id.ruc_account_value);
+        TextView mParticularAddressTextView = (TextView) dialogView.findViewById(R.id.particular_address_value);
+        TextView mCommercialPhoneTextView = (TextView) dialogView.findViewById(R.id.commercial_phone_account);
+        mCiAccountTextView.setText(insurance.getIdentifyCard());
+        mRucAccountTextView.setText(insurance.getRuc());
+        mParticularAddressTextView.setText(insurance.getParcitularAddress());
+        mCommercialPhoneTextView.setText(insurance.getComercialPhone());
+
         builder.setPositiveButton(mContext.getString(R.string.tag_accept), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
             }
         });
+        builder.setView(dialogView);
         builder.create();
         builder.setCancelable(false);
         builder.show();

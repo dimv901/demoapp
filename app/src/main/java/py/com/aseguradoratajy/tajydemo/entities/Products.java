@@ -73,4 +73,13 @@ public class Products {
     // KEEP METHODS - put your custom methods here
     // KEEP METHODS END
 
+    @Override
+    public String toString() {
+        return "Products{" +
+                "id=" + id +
+                ", productId=" + productId +
+                ", productDescription='" + productDescription + '\'' +
+                ", productDetails='" + productDetails + '\'' +
+                '}';
+    }
 }

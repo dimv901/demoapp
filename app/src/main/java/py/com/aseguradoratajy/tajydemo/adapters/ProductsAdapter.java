@@ -73,7 +73,7 @@ public class ProductsAdapter extends ArrayAdapter {
                 icon = R.mipmap.ic_multiriesgo_hogares;
                 break;
             case 5:
-                // cauccion
+                // caucion
                 icon = R.mipmap.caucion;
                 break;
             case 6:
@@ -87,6 +87,31 @@ public class ProductsAdapter extends ArrayAdapter {
             case 8:
                 // seguro agricola
                 icon = R.mipmap.seguro_agricola;
+                break;
+
+            case 9:
+                // robo
+                icon = R.mipmap.robo;
+                break;
+            case 10:
+                // Responsabilidad civil
+                icon = R.mipmap.responsabilidad_civil;
+                break;
+            case 11:
+                // Proteccion familiar
+                icon = R.mipmap.proteccion_familiar;
+                break;
+            case 12:
+                // proteccion cooperativas-bancos
+                icon = R.mipmap.integral_cooeperativas;
+                break;
+            case 13:
+                // incendio
+                icon = R.mipmap.incendio;
+                break;
+            case 14:
+                //automovil
+                icon = R.mipmap.automovil;
                 break;
 
         }

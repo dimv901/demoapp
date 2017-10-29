@@ -9,6 +9,7 @@ import java.util.TimerTask;
 
 import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.repositories.ProductsRepository;
+import py.com.aseguradoratajy.tajydemo.utils.AppPreferences;
 import py.com.aseguradoratajy.tajydemo.utils.SetupInitialData;
 
 public class SplashActivity extends AppCompatActivity {
@@ -24,27 +25,35 @@ public class SplashActivity extends AppCompatActivity {
 
 
         splashTimer = new Timer();
-        if(ProductsRepository.getDao().count() == 0){
+        if (ProductsRepository.getDao().count() == 0) {
             SetupInitialData.insertData();
         }
-        splashTimer.schedule(new TimerTask()
-        {
+        splashTimer.schedule(new TimerTask() {
             @Override
-            public void run()
-            {
+            public void run() {
                 SplashActivity.this.finish();
-                startActivity(new Intent(SplashActivity.this, NavigationActivity.class));
+                checkInSession();
             }
         }, DELAY);
         scheduled = true;
     }
 
     @Override
-    protected void onDestroy()
-    {
+    protected void onDestroy() {
         super.onDestroy();
         if (scheduled)
             splashTimer.cancel();
         splashTimer.purge();
+    }
+
+    private void checkInSession() {
+        boolean isLogged = AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN, false);
+        if (isLogged) {
+            finish();
+            startActivity(new Intent(this, MainActivity.class));
+        } else {
+            AppPreferences.getAppPreferences(this).edit().clear().apply();
+        }
+
     }
 }

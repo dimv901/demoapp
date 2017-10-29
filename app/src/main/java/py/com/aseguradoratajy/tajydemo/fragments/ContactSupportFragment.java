@@ -26,15 +26,31 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import py.com.aseguradoratajy.tajydemo.R;
+import py.com.aseguradoratajy.tajydemo.activities.MainActivity;
 import py.com.aseguradoratajy.tajydemo.adapters.SinisterAdapter;
 import py.com.aseguradoratajy.tajydemo.dialogs.AlertDialogFragment;
 import py.com.aseguradoratajy.tajydemo.dialogs.ProgressDialogFragment;
+import py.com.aseguradoratajy.tajydemo.entities.Insurance;
 import py.com.aseguradoratajy.tajydemo.models.Sinisters;
+import py.com.aseguradoratajy.tajydemo.network.NetworkQueue;
+import py.com.aseguradoratajy.tajydemo.network.RequestApp;
+import py.com.aseguradoratajy.tajydemo.utils.Constants;
+import py.com.aseguradoratajy.tajydemo.utils.JsonObjectRequest;
+import py.com.aseguradoratajy.tajydemo.utils.URLS;
+import py.com.aseguradoratajy.tajydemo.utils.Utiles;
 
 /**
  * Created by Manu0 on 9/23/2017.
@@ -52,7 +68,8 @@ public class ContactSupportFragment extends Fragment {
     private AppCompatEditText mMessageEditText;
     private FloatingActionButton mSendFabButton;
     private AppCompatButton mSinisterButton;
-
+    private ProgressDialogFragment mProgressFragment;
+    private TaskContactSupport taskContactSupport;
 
     public ContactSupportFragment() {
         // Required empty public constructor
@@ -99,6 +116,7 @@ public class ContactSupportFragment extends Fragment {
                 showSinisterDialog();
             }
         });
+        mProgressFragment = ProgressDialogFragment.newInstance(getContext());
         return rootView;
     }
 
@@ -219,7 +237,7 @@ public class ContactSupportFragment extends Fragment {
             focusView.requestFocus();
         } else {
             clearFields();
-            TaskContactSupport taskContactSupport = new TaskContactSupport(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
+            taskContactSupport = new TaskContactSupport(getContext(), mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
             taskContactSupport.execute();
         }
 
@@ -240,42 +258,159 @@ public class ContactSupportFragment extends Fragment {
     }
 
 
-    private class TaskContactSupport extends AsyncTask<Void, Void, Void> {
+    private class TaskContactSupport extends RequestApp {
         private String mNameAndLastName;
         private String mPhone;
         private String mEmail;
         private String mIssues;
         private String mMessage;
-        private ProgressDialogFragment mProgressFragment;
+        private Context mContext;
 
 
-        public TaskContactSupport(String nameAndLastName, String phone, String email, String issues, String message) {
+        TaskContactSupport(Context context, String nameAndLastName, String phone, String email, String issues, String message) {
+            this.mContext = context;
             this.mNameAndLastName = nameAndLastName;
             this.mPhone = phone;
             this.mEmail = email;
             this.mIssues = issues;
             this.mMessage = message;
-            this.mProgressFragment = ProgressDialogFragment.newInstance(getContext());
-            this.mProgressFragment.show(getActivity().getSupportFragmentManager(), ProgressDialogFragment.TAG);
+
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected void confirm() {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setIcon(R.mipmap.ic_error_outline_black_36dp);
+            builder.setTitle(R.string.dialog_confirmation_title);
+            builder.setMessage(R.string.dialog_confirmation_message);
+            builder.setPositiveButton(R.string.label_accept, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    execute();
+                }
+            });
+            builder.setNegativeButton(R.string.tag_cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    taskContactSupport = null;
+                }
+            });
+            AlertDialog confirmDialog = builder.create();
+            confirmDialog.setCanceledOnTouchOutside(false);
+            confirmDialog.show();
+        }
+
+        @Override
+        protected void execute() {
+
+            progressDialog = ProgressDialogFragment.newInstance(mContext);
+            progressDialog.show(getFragmentManager(), ProgressDialogFragment.TAG);
+            ContactSupportRequest mNosaleRequest = new ContactSupportRequest(mNameAndLastName, mPhone, mEmail, mIssues, mMessage);
+            jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                    URLS.CONTACT_SUPPORT_URL,
+                    mNosaleRequest.getParams(),
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            progressDialog.dismiss();
+                            handleResponse(response);
+                            jsonObjectRequest.cancel();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            progressDialog.dismiss();
+                            String message = NetworkQueue.handleError(error, mContext);
+                            jsonObjectRequest.cancel();
+                            showDialog("ERROR", message);
+                        }
+                    });
+
+            jsonObjectRequest.setRetryPolicy(Utiles.getRetryPolicy());
+            jsonObjectRequest.setTag("CONTACT_REQUEST");
+            NetworkQueue.getInstance(mContext).addToRequestQueue(jsonObjectRequest, mContext);
+
+        }
+
+        @Override
+        protected void handleResponse(JSONObject response) {
+
+            String message = null;
+            int status = -1;
+
+            if (response == null) {
+                Utiles.getToast(mContext, (message == null) ? getString(R.string.volley_default_error) : message);
+                return;
+            }
+
+            Log.i("TAG", "REQUEST" + " | Response: " + response.toString());
+
             try {
-                // Simulate network access.
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-            } //3 SECONDS
-            return null;
+                if (response.has("status")) status = response.getInt("status");
+                if (response.has("message")) message = response.getString("message");
+
+                if (status != Constants.RESPONSE_OK) {
+                    Utiles.getToast(mContext, (message == null) ? getString(R.string.volley_default_error) : message);
+                    return;
+                } else {
+                    showDialog("OK", message);
+                }
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Utiles.getToast(mContext, getString(R.string.error_parsing_json));
+            }
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            mProgressFragment.dismiss();
+        class ContactSupportRequest extends RequestObject {
+            private final String TAG_CLASS = ContactSupportRequest.class.getName();
+
+            private String mNameAndLastName;
+            private String mPhone;
+            private String mEmail;
+            private String mIssues;
+            private String mMessage;
+
+            ContactSupportRequest(String nameAndLastName, String phone, String email, String issues, String message) {
+                this.mNameAndLastName = nameAndLastName;
+                this.mPhone = phone;
+                this.mEmail = email;
+                this.mIssues = issues;
+                this.mMessage = message;
+
+            }
+
+            @Override
+            public JSONObject getParams() {
+                JSONObject params = new JSONObject();
+                try {
+                    params.put("name_and_surname", mNameAndLastName);
+                    params.put("phone", mPhone);
+                    params.put("email", mEmail);
+                    params.put("issue", mIssues);
+                    params.put("message", mMessage);
+
+                } catch (JSONException jEX) {
+                    Log.w(TAG_CLASS, "Error while create JSONObject " + jEX.getMessage());
+                }
+                return params;
+            }
+        }
+
+        private void showDialog(String type, String message) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
             dialog.setTitle(getString(R.string.label_contact_title));
-            dialog.setMessage(getString(R.string.success_message));
-            dialog.setIcon(R.mipmap.ic_done_black_36dp);
+            dialog.setMessage(message);
+            switch (type) {
+                case "OK":
+                    dialog.setIcon(R.mipmap.ic_done_black_36dp);
+                    break;
+                case "ERROR":
+                    dialog.setIcon(R.mipmap.ic_error_outline_black_36dp);
+                    break;
+            }
             dialog.setPositiveButton(getString(R.string.tag_accept), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -285,8 +420,9 @@ public class ContactSupportFragment extends Fragment {
             dialog.create();
             dialog.setCancelable(false);
             dialog.show();
-            super.onPostExecute(aVoid);
         }
+
     }
+
 
 }

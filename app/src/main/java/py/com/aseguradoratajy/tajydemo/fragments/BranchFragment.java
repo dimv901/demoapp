@@ -24,21 +24,21 @@ import py.com.aseguradoratajy.tajydemo.models.Branches;
  */
 public class BranchFragment extends Fragment {
 
-    // VIEW
-    private View rootView;
+            // VIEW
+            private View rootView;
 
     public BranchFragment() {
-        // Required empty public constructor
-    }
+                // Required empty public constructor
+            }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment BranchFragment.
-     */
-    public static BranchFragment newInstance() {
-        BranchFragment fragment = new BranchFragment();
+            /**
+             * Use this factory method to create a new instance of
+             * this fragment using the provided parameters.
+             *
+             * @return A new instance of fragment BranchFragment.
+             */
+        public static BranchFragment newInstance() {
+            BranchFragment fragment = new BranchFragment();
         return fragment;
     }
 

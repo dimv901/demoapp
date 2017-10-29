@@ -3,9 +3,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_account"
-            android:icon="@mipmap/ic_account_circle_black_36dp"
-            android:title="@string/label_nav_my_account" />
+            android:id="@+id/nav_web_page"
+            android:icon="@mipmap/ic_public_black_36dp"
+            android:title="@string/label_nav_web_page" />
     </group>
 
     <item android:title="@string/label_nave_session_title">

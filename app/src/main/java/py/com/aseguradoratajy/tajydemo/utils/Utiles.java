@@ -49,7 +49,7 @@ public class Utiles {
         snackbar.show();
     }
 
-    public static String formatNumber(String number) {
+    public static String formatNumber(String number,String appendCurrency) {
         int data = 0;
         try {
             data = Integer.parseInt(number);
@@ -60,8 +60,8 @@ public class Utiles {
         NumberFormat nf = NumberFormat.getNumberInstance();
         DecimalFormat df = (DecimalFormat) nf;
         df.applyPattern("###,###.###");
-        String output = df.format(data);
-        return output;
+        String output = df.format(data).replaceAll(",",".");
+        return output+appendCurrency;
     }
 
     public static void getToast(Context context, String message) {

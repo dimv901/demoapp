@@ -12,19 +12,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:paddingTop="@dimen/default_margin"
         android:contentDescription="@string/content_description"
-        android:src="@mipmap/ic_account_circle_white_36dp" />
+        android:src="@mipmap/tajy_logo" />
 
     <TextView
         android:id="@+id/username_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:paddingTop="@dimen/default_margin"
         android:text="@string/tag_user"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

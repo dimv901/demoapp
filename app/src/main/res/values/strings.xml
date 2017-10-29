@@ -37,6 +37,7 @@
 
     <!-- Policy item-->
     <string name="tag_policies">Polizas</string>
+    <string name="tag_account">Detalle de Cuenta</string>
     <string name="tag_policy_type">Tipo: </string>
     <string name="tag_policy_amount">Monto: </string>
     <string name="tag_policy_code">Número de póliza: </string>
@@ -67,9 +68,10 @@
     <string name="label_nave_session_title">Sesión</string>
     <string name="label_out_session">Cerrar Sesión</string>
     <string name="label_nav_my_account">Mi Cuenta</string>
+    <string name="label_nav_web_page">Visítanos</string>
 
     <!--Default strings-->
-    <string name="label_principal_menu">Menu Principal</string>
+    <string name="label_principal_menu">Mis polizas</string>
     <string name="content_description">descripción</string>
     <string name="title_activity_products">ProductsActivity</string>
     <string name="tag_accept">Aceptar</string>
@@ -105,10 +107,13 @@ compañía telefónica</string>
     <string name="label_issues">Asunto</string>
     <string name="label_message">Mensaje</string>
     <string name="label_sinister">Siniestro</string>
+    <string name="dialog_confirmation_title">Confirmación</string>
+    <string name="dialog_confirmation_message">¿Desea enviar los datos ingresados?</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="label_contact_title">Contácto</string>
+    <string name="label_quotien_title">Cotizador</string>
 
 
     <!-- Quotient fragment-->
@@ -128,4 +133,11 @@ compañía telefónica</string>
     <string name="dialog_error_unexpected">Error inesperado</string>
     <string name="volley_time_out_error">Tiempo de espera de conexión agotado.</string>
     <string name="volley_default_error">Error inesperado, favor intente de vuelta.</string>
+
+    <!-- Account strings-->
+    <string name="tag_details_account">Detalle de Cuenta</string>
+    <string name="tag_account_ci">Cédula: </string>
+    <string name="tag_ruc">Ruc: </string>
+    <string name="tag_particular_address">Dir. Particular: </string>
+    <string name="tag_commercial_phone">Tel. Comercial: </string>
 </resources>

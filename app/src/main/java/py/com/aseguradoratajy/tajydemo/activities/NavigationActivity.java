@@ -37,7 +37,6 @@ public class NavigationActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_navigation);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        checkInSession();
         mCoordinatorLayoutView = (CoordinatorLayout) findViewById(R.id.main_coordinator_layout);
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -97,16 +96,7 @@ public class NavigationActivity extends AppCompatActivity implements
 
     }
 
-    private void checkInSession() {
-        boolean isLogged = AppPreferences.getAppPreferences(this).getBoolean(AppPreferences.KEY_LOGGED_IN, false);
-        if (isLogged) {
-            finish();
-            startActivity(new Intent(this, MainActivity.class));
-        } else {
-            AppPreferences.getAppPreferences(this).edit().clear().apply();
-        }
 
-    }
 
 
     private void setupViewPager(ViewPager viewPager) {

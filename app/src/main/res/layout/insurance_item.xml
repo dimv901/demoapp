@@ -21,8 +21,8 @@
 
             <ImageView
                 android:id="@+id/policy_type_icon"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/default_padding"
                 android:layout_marginLeft="@dimen/default_padding"

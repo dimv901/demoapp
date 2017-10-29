@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -143,9 +144,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
-        if (id == R.id.nav_account) {
-            // Handle the camera action
+        if (id == R.id.nav_web_page) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.tajy.com.py/#")));
         } else if (id == R.id.nav_close_session) {
             finish();
             startActivity(new Intent(MainActivity.this, NavigationActivity.class));

@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/image_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_gravity="center"
             android:contentDescription="@string/content_description"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/content_description"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textStyle="italic" />
     </LinearLayout>
 

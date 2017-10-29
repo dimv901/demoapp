@@ -112,7 +112,7 @@ public class MapPolicyAccount {
         }
         // INCENDIO
         if (isBetween(sectionCode, 200, 202)) {
-            icon = R.mipmap.ic_fire_man; // TODO CAMBIAR ICONO
+            icon = R.mipmap.incendio;
         }
         // TRANSPORTE
         if (isBetween(sectionCode, 300, 304)) {
@@ -135,7 +135,7 @@ public class MapPolicyAccount {
 
         // ROBO
         if (isBetween(sectionCode, 700, 799)) {
-            icon = R.mipmap.tajy_logo; // TODO AGREGAR LOGO DE ROBO
+            icon = R.mipmap.robo;
         }
         // CIRSTALES
         if (isBetween(sectionCode, 800, 801)) {
@@ -152,7 +152,7 @@ public class MapPolicyAccount {
         }
         // RESPONSABILIDAD CIVIL
         if (isBetween(sectionCode, 1100, 1112)) {
-            icon = R.mipmap.tajy_logo; // TODO AGREGAR ICONO DE RESPONSABILIDAD CIVIL
+            icon = R.mipmap.responsabilidad_civil;
         }
         // SEGURO AGRICOLA
         if (isBetween(sectionCode, 1200, 1223)) {
@@ -176,7 +176,7 @@ public class MapPolicyAccount {
 
         // MULTIRIESGO
         if (isBetween(sectionCode, 1600, 1601)) {
-            icon = R.mipmap.ic_multiriesgo_hogares; // TODO VERIFICAR EL ICONO GENERAL DE MULTIRIESGO
+            icon = R.mipmap.ic_multiriesgo_hogares;
         }
 
         return icon;

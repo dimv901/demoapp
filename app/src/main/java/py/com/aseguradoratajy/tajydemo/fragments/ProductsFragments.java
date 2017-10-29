@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,37 +105,62 @@ public class ProductsFragments extends Fragment {
     private void buildDialog(int animationSource, Products mProductsObject) {
         String title = "";
         String productDescription = "";
+        Log.d("TAG", "PRODUCT_OBJECT: " + mProductsObject.toString());
         switch (mProductsObject.getProductId()) {
             case 1:
-                title = "Accidentes Personales";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 2:
-                title = "Transporte";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 3:
-                title = "Mutiriesgo Comercio";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 4:
-                title = "Multiriesgo Hogar";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 5:
-                title = "1. Cacucción";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 6:
-                title = "Equipos Electrónicos";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 7:
-                title = "Vida Colectiva";
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
             case 8:
-                title = "Seguro Agricola";
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 9:
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 10:
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 11:
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 12:
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 13:
+                title = mProductsObject.getProductDescription();
+                productDescription = mProductsObject.getProductDetails();
+                break;
+            case 14:
+                title = mProductsObject.getProductDescription();
                 productDescription = mProductsObject.getProductDetails();
                 break;
 

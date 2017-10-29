@@ -19,13 +19,13 @@ import py.com.aseguradoratajy.tajydemo.entities.Marks;
  * Created by Manu0 on 10/12/2017.
  */
 
-public class VehiclesBraddAdapter extends ArrayAdapter<Marks> {
+public class VehiclesBradAdapter extends ArrayAdapter<Marks> {
 
     private List<Marks> mMarksItem = new ArrayList<>();
     private Context mContext;
     private int layoutResource;
 
-    public VehiclesBraddAdapter(Context context, int resource, List<Marks> data) {
+    public VehiclesBradAdapter(Context context, int resource, List<Marks> data) {
         super(context, resource);
         mMarksItem = data;
         mContext = context;
@@ -57,7 +57,7 @@ public class VehiclesBraddAdapter extends ArrayAdapter<Marks> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        VehiclesBraddAdapter.ViewHolder viewHolder = new VehiclesBraddAdapter.ViewHolder();
+        VehiclesBradAdapter.ViewHolder viewHolder = new VehiclesBradAdapter.ViewHolder();
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(layoutResource, parent, false);
             // Configure the view holder
@@ -65,7 +65,7 @@ public class VehiclesBraddAdapter extends ArrayAdapter<Marks> {
             convertView.setTag(viewHolder);
         } else {
             // Fill data from the recycled view holder
-            viewHolder = (VehiclesBraddAdapter.ViewHolder) convertView.getTag();
+            viewHolder = (VehiclesBradAdapter.ViewHolder) convertView.getTag();
         }
         Marks marks = mMarksItem.get(position);
         viewHolder.mCommerceTypeDescription.setText(marks.getDescription().toUpperCase());

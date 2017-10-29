@@ -2,16 +2,22 @@ package py.com.aseguradoratajy.tajydemo.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.List;
+import java.util.Locale;
 
 import py.com.aseguradoratajy.tajydemo.R;
 import py.com.aseguradoratajy.tajydemo.entities.Insurance;
+import py.com.aseguradoratajy.tajydemo.utils.Utiles;
 
 /**
  * Created by Manu0 on 10/8/2017.
@@ -38,11 +44,11 @@ public class InsuranceDetailsAdapter extends RecyclerView.Adapter<InsuranceDetai
     public void onBindViewHolder(final InsuranceDetailsAdapter.InsuranceDetailsViewHolder holder, int position) {
         Insurance i = mListInsuranceItems.get(position);
         holder.mFeePolicy.setText(String.valueOf(position + 1) + "/" + String.valueOf(getItemCount()));
-        holder.mAmountPolicy.setText(i.getAmount());
+        holder.mAmountPolicy.setText(Utiles.formatNumber(i.getAmount()," Gs."));
         holder.mExpireDate.setText(i.getExpiration());
         holder.mEmitionDate.setText(i.getIssue());
         holder.mLastPaymentDate.setText(i.getLastPayment());
-        holder.mBalance.setText(i.getBalance());
+        holder.mBalance.setText(Utiles.formatNumber(i.getBalance()," Gs."));
 
     }
 

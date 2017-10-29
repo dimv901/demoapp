@@ -15,6 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:orientation="vertical">
 
@@ -60,43 +61,12 @@
                 android:id="@+id/login_button_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/big_margin_layout"
                 android:layout_gravity="center"
                 android:drawableEnd="@mipmap/ic_navigate_next_white_24dp"
                 android:drawableRight="@mipmap/ic_navigate_next_white_24dp"
                 android:text="@string/prompt_login"
                 android:theme="@style/MyCustomRaisedButton" />
-
-            <android.support.v7.widget.ButtonBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="@dimen/activity_horizontal_margin"
-                android:background="@drawable/button_bar_border"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/login_button_reset_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/prompt_forget_password"
-                    android:textSize="13sp"
-                    android:theme="@style/MyCustomFlatButton" />
-
-                <View
-                    android:layout_width="3dp"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:background="@color/colorAccent" />
-
-                <Button
-                    android:id="@+id/login_button_register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/prompt_register"
-                    android:textSize="13sp"
-                    android:theme="@style/MyCustomFlatButton" />
-            </android.support.v7.widget.ButtonBarLayout>
 
 
         </LinearLayout>

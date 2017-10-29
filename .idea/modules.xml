@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TajyDemo.iml" filepath="$PROJECT_DIR$/TajyDemo.iml" />
+      <module fileurl="file://C:\Users\Manu0\AndroidStudioProjects\AppTajyDemo\demoapp\TajyDemo.iml" filepath="C:\Users\Manu0\AndroidStudioProjects\AppTajyDemo\demoapp\TajyDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/demoapp.iml" filepath="$PROJECT_DIR$/demoapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/mydaogenerator/mydaogenerator.iml" filepath="$PROJECT_DIR$/mydaogenerator/mydaogenerator.iml" />
